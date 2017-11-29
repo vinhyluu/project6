@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import SearchForm from './SearchForm'
+import SearchForm from './SearchForm';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 
