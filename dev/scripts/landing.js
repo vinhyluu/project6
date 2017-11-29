@@ -4,7 +4,6 @@ import axios from 'axios';
 import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
-// import Login from './login';
 
 
 const provider = new firebase.auth.GoogleAuthProvider();
