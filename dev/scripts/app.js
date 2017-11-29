@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import firebase from 'firebase';
 import Landing from './landing';
 import Profile from './profile';
 import SearchForm from './SearchForm';
