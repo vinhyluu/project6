@@ -73,7 +73,7 @@ class SearchForm extends React.Component {
         pageResults(results) {
             this.setState({ results })
         }
-        
+
     render() {
         return (
             <div>
