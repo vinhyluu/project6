@@ -10,11 +10,12 @@ class SearchForm extends React.Component {
         this.state = {
             searchByBrand: "",
             searchByType: "",
-            searchResults: [],
+            results: [],
         }
         this.handleBrand = this.handleBrand.bind(this);
         this.handleType = this.handleType.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.pageResults = this.pageResults.bind(this);
     }
 
     handleBrand(e) {
@@ -44,8 +45,7 @@ class SearchForm extends React.Component {
                 searchByType: "",
                 searchByBrand: "",
             })
-            
-     
+
         } else if (type === null) {
             searchQuery.push(`${apiUrl}brand=${brand}`);
 
@@ -53,11 +53,9 @@ class SearchForm extends React.Component {
                 searchByType: "",
                 searchByBrand: "",
             })
-           
+
         } else {
             searchQuery.push(`${apiUrl}brand=${brand}&product_type=${type}`);
-            searchByType: ""
-            searchByBrand: ""
 
             this.setState({
                 searchByType: "",
@@ -65,14 +63,17 @@ class SearchForm extends React.Component {
             })
         }
         axios.get(`${searchQuery}`)
-            .then((results) => {
-                this.setState({
-                    searchResults: results,
-                })
+            .then((res) => {
+                const results = res.data
+                this.pageResults(results)
+            }).catch((err) => {
+                console.log(err)
             })
         }
-
-
+        pageResults(results) {
+            this.setState({ results })
+        }
+        
     render() {
         return (
             <div>
@@ -94,29 +95,33 @@ class SearchForm extends React.Component {
                         </div>
                     </form>
                 </div>
-
-                <div>
-                    {Object.keys(this.state.searchResults).map((item, i)=>{
-                        return <SearchResults 
-                        key={i}
-                        name={this.state.searchResults.data.name}          
-                        image={this.state.searchResults.image_link}/>
+                <ul className="returnedData">
+                    {this.state.results.map((brand, index) => {
+                        return <MakeUpProducts data={brand} key={index} />
                     })}
-                </div>
+                </ul>
             </div>
         )
     }
 }
 
-class SearchResults extends React.Component{
-    render(){
-        return(
-            <div className="searchItem">
-                <h1>{this.props.name}</h1>
-                
-            </div>
-        )
-    }
+const MakeUpProducts = (props) => {
+    console.log(props.data)
+    return (
+        <ul>
+            <li className="brandImage">
+                <img src={`${props.data.image_link}`} alt="cool beans" />
+            </li>
+            <li className="brandTitle">
+                {props.data.brand}
+            </li>
+            <li className="brandType">
+                {props.data.name}
+            </li>
+            <li>
+                <a href={`${props.data.product_link}`} target="_blank">Buy Me</a>
+            </li>
+        </ul>
+    )
 }
-
 export default SearchForm
