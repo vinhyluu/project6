@@ -1,20 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import firebase from 'firebase';
+import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
 // import Login from './login';
 
-const config = {
-    apiKey: "AIzaSyAwexiXibtCy-1vAH6V_LF2mkrrLlgDQQo",
-    authDomain: "makeup-fun.firebaseapp.com",
-    databaseURL: "https://makeup-fun.firebaseio.com",
-    projectId: "makeup-fun",
-    storageBucket: "makeup-fun.appspot.com",
-    messagingSenderId: "1012365554610"
-};
-firebase.initializeApp(config);
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
