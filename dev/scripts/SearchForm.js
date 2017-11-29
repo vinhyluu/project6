@@ -39,12 +39,30 @@ class SearchForm extends React.Component {
 
         if (brand === null) {
             searchQuery.push(`${apiUrl}product_type=${type}`);
-    
+
+            this.setState({
+                searchByType: "",
+                searchByBrand: "",
+            })
+            
+     
         } else if (type === null) {
             searchQuery.push(`${apiUrl}brand=${brand}`);
+
+            this.setState({
+                searchByType: "",
+                searchByBrand: "",
+            })
            
         } else {
             searchQuery.push(`${apiUrl}brand=${brand}&product_type=${type}`);
+            searchByType: ""
+            searchByBrand: ""
+
+            this.setState({
+                searchByType: "",
+                searchByBrand: "",
+            })
         }
         axios.get(`${searchQuery}`)
             .then((results) => {
@@ -78,8 +96,24 @@ class SearchForm extends React.Component {
                 </div>
 
                 <div>
-                    
-                </div> 
+                    {Object.keys(this.state.searchResults).map((item, i)=>{
+                        return <SearchResults 
+                        key={i}
+                        name={this.state.searchResults.data.name}          
+                        image={this.state.searchResults.image_link}/>
+                    })}
+                </div>
+            </div>
+        )
+    }
+}
+
+class SearchResults extends React.Component{
+    render(){
+        return(
+            <div className="searchItem">
+                <h1>{this.props.name}</h1>
+                
             </div>
         )
     }
