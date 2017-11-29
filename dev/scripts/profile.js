@@ -1,22 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import firebase from 'firebase';
+import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-var config = {
-    apiKey: "AIzaSyCj6H_1C3GR8cp2D3p4qTTMakeLJMDMaw0",
-    authDomain: "my-awesome-project-6.firebaseapp.com",
-    databaseURL: "https://my-awesome-project-6.firebaseio.com",
-    projectId: "my-awesome-project-6",
-    storageBucket: "my-awesome-project-6.appspot.com",
-    messagingSenderId: "682386649526"
-};
-firebase.initializeApp(config);
+
+
 
 
 const provider = new firebase.auth.GoogleAuthProvider();
-class PetList extends React.Component {
-
+class Profile extends React.Component {
+ 
     constructor() {
         super();
         this.state = {
@@ -179,3 +172,5 @@ class PetList extends React.Component {
         )
     }
 }
+
+export default Profile;
