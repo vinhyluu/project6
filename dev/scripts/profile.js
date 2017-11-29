@@ -13,55 +13,55 @@ class Profile extends React.Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: false,
-            userKey: "",
+            // loggedIn: false,
+            // userKey: "",
             twitter: "",
             instagram: "",
             blurb: "",
             imageUrl: "",
         }
-        this.login = this.login.bind(this);
+        // this.login = this.login.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
     
-    componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
-            console.log(user.email);
-            if (user) {
-                // console.log("existing user");
-                this.setState({
-                    loggedIn: true,
-                    userKey: user.email,
-                });
-            } else {
-                // console.log("you're not a user");
-                this.setState({
-                    loggedIn: false,
-                    userKey: "",
-                });
-            }
-        });
-    }
-    login(e) {
-        e.preventDefault();
-        console.log('sign in');
-        firebase.auth().signInWithPopup(provider)
-            .then((user) => {
-                console.log(user);
-                this.setState({
-                    loggedIn: true,
-                    userKey: user.email,
-                })
-            })
-    }
-    logout(e) {
-        e.preventDefault();
-        console.log('logout');
-        firebase.auth().signOut()
-            .then((user) => {
-                console.log(user);
-            });
-    }
+    // componentDidMount() {
+    //     firebase.auth().onAuthStateChanged((user) => {
+    //         console.log(user.email);
+    //         if (user) {
+    //             // console.log("existing user");
+    //             this.setState({
+    //                 loggedIn: true,
+    //                 userKey: user.email,
+    //             });
+    //         } else {
+    //             // console.log("you're not a user");
+    //             this.setState({
+    //                 loggedIn: false,
+    //                 userKey: "",
+    //             });
+    //         }
+    //     });
+    // }
+    // login(e) {
+    //     e.preventDefault();
+    //     console.log('sign in');
+    //     firebase.auth().signInWithPopup(provider)
+    //         .then((user) => {
+    //             console.log(user);
+    //             this.setState({
+    //                 loggedIn: true,
+    //                 userKey: user.email,
+    //             })
+    //         })
+    // }
+    // logout(e) {
+    //     e.preventDefault();
+    //     console.log('logout');
+    //     firebase.auth().signOut()
+    //         .then((user) => {
+    //             console.log(user);
+    //         });
+    // }
     handleClick(e) {
         console.log('clicked');
         e.preventDefault();
