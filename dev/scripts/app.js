@@ -4,7 +4,17 @@ import axios from 'axios';
 import SearchForm from './SearchForm'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
+
 class App extends React.Component {
+
+  render() {
+    return (
+      <div>
+        <Heading/>
+      </div>
+    )
+  }
+
     render() {
       return (
         <div>
@@ -13,6 +23,12 @@ class App extends React.Component {
         </div>
       )
     }
+
 }
+
+
+
+
+
 
 ReactDOM.render(<App />, document.getElementById('app'));
