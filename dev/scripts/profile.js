@@ -3,13 +3,9 @@ import ReactDOM from 'react-dom';
 import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-
-
-
-
 const provider = new firebase.auth.GoogleAuthProvider();
 class Profile extends React.Component {
- 
+
     constructor() {
         super();
         this.state = {
@@ -24,44 +20,37 @@ class Profile extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
     
-    // componentDidMount() {
-    //     firebase.auth().onAuthStateChanged((user) => {
-    //         console.log(user.email);
-    //         if (user) {
-    //             // console.log("existing user");
-    //             this.setState({
-    //                 loggedIn: true,
-    //                 userKey: user.email,
-    //             });
-    //         } else {
-    //             // console.log("you're not a user");
-    //             this.setState({
-    //                 loggedIn: false,
-    //                 userKey: "",
-    //             });
-    //         }
-    //     });
-    // }
-    // login(e) {
-    //     e.preventDefault();
-    //     console.log('sign in');
-    //     firebase.auth().signInWithPopup(provider)
-    //         .then((user) => {
-    //             console.log(user);
-    //             this.setState({
-    //                 loggedIn: true,
-    //                 userKey: user.email,
-    //             })
-    //         })
-    // }
-    // logout(e) {
-    //     e.preventDefault();
-    //     console.log('logout');
-    //     firebase.auth().signOut()
-    //         .then((user) => {
-    //             console.log(user);
-    //         });
-    // }
+    componentDidMount() {
+        var dbRef = firebase.database().ref();
+
+        dbRef.on('value', (snapshot) => {
+            // console.log(data.val());
+            const newState=[];
+            const data = snapshot.val();
+
+            // console.log(data);
+
+            for (let key in data) {
+                let newTwitter = data[`twitter`];
+                let newBlurb = data[`blurb`];
+                let newInstagram = data[`instagram`];
+                let newImageUrl = data[`imageUrl`]
+
+                // console.log(newTwitter)
+                // console.log(key)
+                // console.log(data[key])
+                // newState.push(data[key])
+                this.setState({
+                    twitter: newTwitter,
+                    instagram: newInstagram,
+                    blurb: newBlurb,
+                    imageUrl: newImageUrl
+                })
+                console.log(this.state)
+            }
+        });
+    }
+    
     handleClick(e) {
         console.log('clicked');
         e.preventDefault();
@@ -110,41 +99,6 @@ class Profile extends React.Component {
                 blurb: newBlurb
             })
         }
-
-    // const file = document.getElementById("userImage").files[0];
-
-    // const storageRef = firebase.storage().ref(file.name);
-
-    // storageRef.put(file).then(function (result) {
-
-    //   storageRef.getDownloadURL()
-    //     .then(function (result) {
-    //       console.log(result);
-    //       this.setState({
-    //         imageUrl: result,
-    //       });
-    //       dbRef.update({
-    //         twitter: newTwitter,
-    //         instagram: newInstagram,
-    //         blurb: newBlurb,
-    //         imageUrl: this.state.imageUrl,
-    //       })
-    //     }.bind(this));
-    // }.bind(this));
-
-    // dbRef.set({
-    //   twitter: newTwitter,
-    //   instagram: newInstagram,
-    //   blurb: newBlurb,
-    //   imageUrl: this.state.imageUrl,
-    // })
-
-    // const dbReftwitter = firebase.database().ref();
-    // dbReftwitter.push(newTwitter);
-    // const dbRefinstagram = firebase.database().ref();
-    // dbRefinstagram.push(newInstagram);
-    // const dbRefblurb = firebase.database().ref();
-    // dbRefblurb.push(newBlurb)
     }
     render(){
         // console.log(this.props)
@@ -167,7 +121,21 @@ class Profile extends React.Component {
                         <input type="file" name="userImage[]" id="userImage" />
                     </div>
                     <input className="submit" type="submit" value="Add" />
+
+                    {/* <i className="fa fa-edit"></i> */}
                 </form>
+                <div>
+                    <img src={`${this.state.imageUrl}`} alt=""/>
+                    <p>{this.state.blurb}</p>
+                
+                    <a href={`${this.state.twitter}`}>
+                        <i className="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href={`${this.state.instagram}`}>
+                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                
+                </div>
             </div>
         )
     }
