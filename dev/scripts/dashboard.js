@@ -3,26 +3,65 @@ import firebase from 'firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class Dashboard extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             userKey: "",
             userName: "",
+            existingUser: "",
         }
+        this.editInfo = this.editInfo.bind(this);
     }
 
+    
     componentDidMount() {
-        this.setState({
-            userKey: this.props.userKey,
-            userName: this.props.userName,
-
-        });
+        const userId = this.props.userKey;
+        
+        const dbRef = firebase.database().ref(`${userId}`);
+        
+        dbRef.on("value", (res) => {
+            const data = res.val();
+            
+            const userStanding = data.existingUser;
+            console.log(userStanding);
+            if(data.existingUser === true){
+                this.setState({
+                    existingUser: true
+                })
+                console.log(userStanding);
+            }else{
+                this.setState({
+                    existingUser: false
+                })
+                console.log(userStanding);
+            }   
+        })
     }
+
+    editInfo(e){
+        e.preventDefault();
+        this.setState({
+            existingUser: true
+        })
+
+        const dbRef = firebase.database().ref(`${this.props.userKey}`);
+
+        dbRef.update({
+            existingUser: true
+        })
+    }
+
     render() {
         return (
-            <section className="adminPage">
-                <h1>Hayyy {this.state.userName}</h1>
-            </section>
+            <div>
+                {this.state.existingUser === false
+                    ? <section>
+                        <h1>Not existing user</h1>
+                        <button onClick={this.editInfo}>BUTTON</button>
+                    </section>
+                    : <h1>existing user</h1>}
+                <a href="" onClick={this.logout}>Logout</a>
+            </div>
         )
     }
 }
