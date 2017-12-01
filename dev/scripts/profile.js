@@ -38,7 +38,6 @@ class Profile extends React.Component {
                     imageUrl: newImageUrl,
                     note: newNote
                 })
-                console.log(this.state)
             }
         });
     }
