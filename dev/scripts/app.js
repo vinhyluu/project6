@@ -5,6 +5,7 @@ import Landing from './landing';
 import Profile from './profile';
 import SearchForm from './SearchForm';
 import ProfileView from './ProfileView';
+import Nav from './nav';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
     render() {
       return (
         <div>
+          <Nav />
           <Landing />
           <Profile />
           <h1>Makeup App</h1>
