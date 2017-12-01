@@ -60,7 +60,7 @@ class SearchForm extends React.Component {
             this.setState({
                 searchByType: "",
                 searchByBrand: "",
-            })
+            })  
         }
         axios.get(`${searchQuery}`)
             .then((res) => {
@@ -123,4 +123,5 @@ const MakeUpProducts = (props)=>{
       </ul>
     )
    }
+   
 export default SearchForm
