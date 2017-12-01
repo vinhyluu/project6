@@ -90,6 +90,8 @@ class Landing extends React.Component {
                         </div>
                     </section>
                     : <Dashboard
+                    // when the user signs and and if they have an existing account, direct them to the admin page
+                    //if the user doesn't haev an existing account, direct them to the first time users page 
                         userKey={this.state.userKey}
                         userName={this.state.userName} />}
                 <a href="" onClick={this.logout}>Logout</a>
