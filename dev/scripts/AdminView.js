@@ -9,7 +9,7 @@ class AdminView extends React.Component{
         super();
         this.state={
             currentItems: [],
-            active: false
+          
         }
         this.removeItem = this.removeItem.bind(this);
         this.toggleClass = this.toggleClass.bind(this)
@@ -32,6 +32,7 @@ class AdminView extends React.Component{
         })
     }
     
+    
     removeItem(e, key) {
         e.preventDefault();
         const selectionRef = key;
@@ -50,15 +51,20 @@ class AdminView extends React.Component{
                 userItems.push(value);
             }
             this.setState({
-                currentItems: userItems
+                currentItems: userItems,
+                
             })
         })
     }
 
-    toggleClass(){
+    toggleClass(e){
+        e.preventDefault();
         const currentState = this.state.active;
-        this.setState({ active: !currentState})
+        this.setState({ active: !currentState});
+            
     }
+
+        //store null or active value for each item added to shareable list on adminpage before we decide to add to shareable list
 
     render(){
         return(
@@ -66,7 +72,6 @@ class AdminView extends React.Component{
                 <div>
                     <div>
                     <img src={`${this.state.imageUrl}`} alt=""/>
-                    <button className={this.state.active ? 'your_className': null} onClick={this.toggleClass}><i className="fa fa-plus" aria-hidden="true"></i></button>
                     </div>
 
                     <EditingBox/>
@@ -83,16 +88,20 @@ class AdminView extends React.Component{
                 
                 {this.state.currentItems.map((item)=>{
                     return(
-                    <div key={item.selectionKey}>
-                        <div className="wrapper">
-                            <img src={item.imageUrl} alt=""/> 
-                            <h1>{item.brandTitle}</h1>
-                             <p>{item.productDescription}</p>
-                            <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
+                    <div> 
+                        <div key={item.selectionKey}>
+                            <div className="wrapper">
+                                <img src={item.imageUrl} alt=""/> 
+                                <h1>{item.brandTitle}</h1>
+                                <p>{item.productDescription}</p>
+                                <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
+                            </div>
                         </div>
+                        <button className={this.state.active ? 'active': null} onClick={this.toggleClass}><i className="fa fa-plus" aria-hidden="true"></i>Add to Shareable Page</button>
                     </div>
                     )
                 })}
+                {/* <button className="addtoSharable" >Add to Sharable Page</button> */}
             </div>
         )
     }
