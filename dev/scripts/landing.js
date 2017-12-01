@@ -22,12 +22,12 @@ class Landing extends React.Component {
     }
 
     componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
+        firebase.auth().onAuthStateChanged((data) => {
+            if (data) {
                 this.setState({
                     loggedIn: true,
-                    userKey: user.uid,
-                    userName: user.displayName,
+                    userKey: data.uid,
+                    userName: data.displayName,
                 });
             } else {
                 this.setState({
@@ -37,9 +37,6 @@ class Landing extends React.Component {
                 });
             }
         });
-    }
-
-    componentDidMount() {
     }
 
     login(e) {
@@ -61,7 +58,7 @@ class Landing extends React.Component {
                     email: `${data.user.email}`,
                 });
             });
-    }
+        }
 
     logout(e) {
         e.preventDefault();
@@ -76,8 +73,6 @@ class Landing extends React.Component {
     }
     render() {
         return (
-            // when the user signs and and if they have an existing account, direct them to the admin page
-            //if the user doesn't haev an existing account, direct them to the first time users page 
             <div>
                 {this.state.loggedIn === false
                     ? <section>

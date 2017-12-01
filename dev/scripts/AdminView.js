@@ -9,10 +9,12 @@ class AdminView extends React.Component{
         super();
         this.state={
             currentItems: [],
-            active: false
+            active: false,
+            testColor: "",
         }
         this.removeItem = this.removeItem.bind(this);
-        this.toggleClass = this.toggleClass.bind(this)
+        this.toggleClass = this.toggleClass.bind(this);
+        this.toggleColor = this.toggleColor.bind(this);
     }
 
     componentDidMount(){
@@ -60,40 +62,66 @@ class AdminView extends React.Component{
         this.setState({ active: !currentState})
     }
 
+    toggleColor(e, colorValue){
+        e.preventDefault();
+        this.setState({
+            testColor: colorValue
+        })
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1");
+        dbRef.update({
+            backgroundColor: colorValue
+        })
+    }
+    
+    
     render(){
+        const divStyle = {
+            background: "black",
+            width: "50px",
+            height: "50px",
+        }
+
+
         return(
             <div>
                 <div>
                     <div>
-                    <img src={`${this.state.imageUrl}`} alt=""/>
-                    <button className={this.state.active ? 'your_className': null} onClick={this.toggleClass}><i className="fa fa-plus" aria-hidden="true"></i></button>
-                    </div>
+                        <div>
+                            <img src={`${this.state.imageUrl}`} alt=""/>
+                            <button className={this.state.active ? 'your_className': null} onClick={this.toggleClass}><i className="fa fa-plus" aria-hidden="true"></i></button>
+                            </div>
 
-                    <EditingBox/>
-                    
-                    <p>{this.state.note}</p>
-                    <a href={`${this.state.twitter}`}>
-                        <i className="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href={`${this.state.instagram}`}>
-                        <i className="fa fa-instagram" aria-hidden="true"></i>
-                    </a>
-                
-                </div>
-                
-                {this.state.currentItems.map((item)=>{
-                    return(
-                    <div key={item.selectionKey}>
-                        <div className="wrapper">
-                            <img src={item.imageUrl} alt=""/> 
-                            <h1>{item.brandTitle}</h1>
-                             <p>{item.productDescription}</p>
-                            <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
-                        </div>
+                            <EditingBox/>
+                            
+                            <p>{this.state.note}</p>
+                            <a href={`${this.state.twitter}`}>
+                                <i className="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href={`${this.state.instagram}`}>
+                                <i className="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
                     </div>
-                    )
-                })}
+                    
+                    {this.state.currentItems.map((item)=>{
+                        return(
+                        <div key={item.selectionKey}>
+                            <div className="wrapper">
+                                <img src={item.imageUrl} alt=""/> 
+                                <h1>{item.brandTitle}</h1>
+                                <p>{item.productDescription}</p>
+                                <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
+                            </div>
+                        </div>
+                        )
+                    })}
+                </div>
+            <div>
+                <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
+                <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>
+                <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption3")}></div>
+                <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption4")}></div>
             </div>
+        </div>
         )
     }
 }
