@@ -61,7 +61,7 @@ class SearchForm extends React.Component {
             this.setState({
                 searchByType: "",
                 searchByBrand: "",
-            })
+            })  
         }
 
         const test = [];
@@ -186,4 +186,24 @@ class MakeUpProducts extends React.Component {
     }
 }
 
+const MakeUpProducts = (props)=>{
+    console.log(props.data)
+    return(
+      <ul>
+        <li className="brandImage">
+          <img src={`${props.data.image_link}`} alt="cool beans"/>
+        </li>
+        <li className="brandTitle">
+            {props.data.brand}
+        </li>
+        <li className="brandType">
+            {props.data.name}
+        </li>
+        <li>
+            <a href={`${props.data.product_link}`} target="_blank">Buy Me</a>
+        </li>
+      </ul>
+    )
+   }
+   
 export default SearchForm
