@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-
 const config = {
     apiKey: "AIzaSyAwexiXibtCy-1vAH6V_LF2mkrrLlgDQQo",
     authDomain: "makeup-fun.firebaseapp.com",
@@ -18,5 +17,6 @@ const config = {
 //   messagingSenderId: "682386649526"
 // };
 firebase.initializeApp(config); 
+
 
 export default firebase;

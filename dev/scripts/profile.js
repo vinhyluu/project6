@@ -38,13 +38,11 @@ class Profile extends React.Component {
                     imageUrl: newImageUrl,
                     note: newNote
                 })
-                console.log(this.state)
             }
         });
     }
     
     handleClick(e) {
-        console.log('clicked');
         e.preventDefault();
 
         const newTwitter = this.twitter.value;
@@ -59,7 +57,6 @@ class Profile extends React.Component {
         });
 
         if (document.getElementById("userImage").value != "") {
-            console.log("you have a file");
             const file = document.getElementById("userImage").files[0];
 
             const storageRef = firebase.storage().ref(file.name);
@@ -68,7 +65,6 @@ class Profile extends React.Component {
 
                 storageRef.getDownloadURL()
                     .then(function (result) {
-                        console.log(result);
                         this.setState({
                             imageUrl: result,
                         });
@@ -100,6 +96,7 @@ class Profile extends React.Component {
                         <input type="text" name="instagram" ref={ref => this.instagram = ref} />
                     </div>
                     <div className="note">
+                    
                         <label htmlFor="profileNote"></label>
                         <textarea name="profileNote" id="" maxLength="280" ref={ref => this.note = ref}></textarea>
                     </div>

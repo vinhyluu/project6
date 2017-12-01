@@ -162,5 +162,8 @@ class MakeUpProducts extends React.Component {
         )
     }
 }
+
+
    
 export default SearchForm
+
