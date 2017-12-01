@@ -1,67 +1,59 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from './firebase';
+import EditingBox from './EditingBox';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-
-
-
-
 const provider = new firebase.auth.GoogleAuthProvider();
+
 class Profile extends React.Component {
- 
+
     constructor() {
         super();
         this.state = {
-            loggedIn: false,
-            userKey: "",
+            // loggedIn: false,
+            // userKey: "",
             twitter: "",
             instagram: "",
-            blurb: "",
-            imageUrl: "",
+            note: "",
+            imageUrl: ""
         }
-        this.login = this.login.bind(this);
+        // this.login = this.login.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        
     }
     
     componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
-            console.log(user.email);
-            if (user) {
-                // console.log("existing user");
+        var dbRef = firebase.database().ref();
+
+        dbRef.on('value', (snapshot) => {
+            // console.log(data.val());
+            const newState=[];
+            const data = snapshot.val();
+
+            // console.log(data);
+
+            for (let key in data) {
+                let newTwitter = data[`twitter`];
+                let newNote = data[`note`];
+                let newInstagram = data[`instagram`];
+                let newImageUrl = data[`imageUrl`]
+
+                // console.log(newTwitter)
+                // console.log(key)
+                // console.log(data[key])
+                // newState.push(data[key])
                 this.setState({
-                    loggedIn: true,
-                    userKey: user.email,
-                });
-            } else {
-                // console.log("you're not a user");
-                this.setState({
-                    loggedIn: false,
-                    userKey: "",
-                });
+                    twitter: newTwitter,
+                    instagram: newInstagram,
+                    imageUrl: newImageUrl,
+                    note: newNote
+                })
+                console.log(this.state)
             }
         });
     }
-    login(e) {
-        e.preventDefault();
-        console.log('sign in');
-        firebase.auth().signInWithPopup(provider)
-            .then((user) => {
-                console.log(user);
-                this.setState({
-                    loggedIn: true,
-                    userKey: user.email,
-                })
-            })
-    }
-    logout(e) {
-        e.preventDefault();
-        console.log('logout');
-        firebase.auth().signOut()
-            .then((user) => {
-                console.log(user);
-            });
-    }
+    
     handleClick(e) {
         console.log('clicked');
         e.preventDefault();
@@ -70,7 +62,7 @@ class Profile extends React.Component {
 
         const newTwitter = this.twitter.value;
         const newInstagram = this.instagram.value;
-        const newBlurb = this.description.value
+        const newNote = this.note.value
         const dbRef = firebase.database().ref();
 
 
@@ -78,7 +70,7 @@ class Profile extends React.Component {
         this.setState({
             twitter: newTwitter,
             instagram: newInstagram,
-            blurb: newBlurb
+            note: newNote
         });
 
         if (document.getElementById("userImage").value != "") {
@@ -98,7 +90,7 @@ class Profile extends React.Component {
                         dbRef.update({
                             // twitter: newTwitter,
                             // instagram: newInstagram,
-                            // blurb: newBlurb,
+                            // note: newNote,
                             imageUrl: this.state.imageUrl,
                         })
                     }.bind(this));
@@ -107,47 +99,13 @@ class Profile extends React.Component {
             dbRef.update({
                 twitter: newTwitter,
                 instagram: newInstagram,
-                blurb: newBlurb
+                note: newNote
             })
         }
-
-    // const file = document.getElementById("userImage").files[0];
-
-    // const storageRef = firebase.storage().ref(file.name);
-
-    // storageRef.put(file).then(function (result) {
-
-    //   storageRef.getDownloadURL()
-    //     .then(function (result) {
-    //       console.log(result);
-    //       this.setState({
-    //         imageUrl: result,
-    //       });
-    //       dbRef.update({
-    //         twitter: newTwitter,
-    //         instagram: newInstagram,
-    //         blurb: newBlurb,
-    //         imageUrl: this.state.imageUrl,
-    //       })
-    //     }.bind(this));
-    // }.bind(this));
-
-    // dbRef.set({
-    //   twitter: newTwitter,
-    //   instagram: newInstagram,
-    //   blurb: newBlurb,
-    //   imageUrl: this.state.imageUrl,
-    // })
-
-    // const dbReftwitter = firebase.database().ref();
-    // dbReftwitter.push(newTwitter);
-    // const dbRefinstagram = firebase.database().ref();
-    // dbRefinstagram.push(newInstagram);
-    // const dbRefblurb = firebase.database().ref();
-    // dbRefblurb.push(newBlurb)
     }
+   
     render(){
-        // console.log(this.props)
+        
         return(
             <div>
                 <form onSubmit={this.handleClick}>
@@ -159,15 +117,29 @@ class Profile extends React.Component {
                         <label htmlFor="instagram">Instagram Link</label>
                         <input type="text" name="instagram" ref={ref => this.instagram = ref} />
                     </div>
-                    <div className="description">
-                        <label htmlFor="profileDescription"></label>
-                        <textarea name="profileDescription" id="" maxLength="280" ref={ref => this.description = ref}></textarea>
+                    <div className="note">
+                        <label htmlFor="profileNote"></label>
+                        <textarea name="profileNote" id="" maxLength="280" ref={ref => this.note = ref}></textarea>
                     </div>
                     <div className="image">
                         <input type="file" name="userImage[]" id="userImage" />
                     </div>
                     <input className="submit" type="submit" value="Add" />
                 </form>
+               
+                <div>
+                    <img src={`${this.state.imageUrl}`} alt=""/>
+                    <EditingBox/>
+                    
+                    <p>{this.state.note}</p>
+                    <a href={`${this.state.twitter}`}>
+                        <i className="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href={`${this.state.instagram}`}>
+                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                
+                </div>
             </div>
         )
     }

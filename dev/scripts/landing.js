@@ -57,11 +57,15 @@ class Landing extends React.Component {
                 const userId = firebase.auth().currentUser.uid;
 
                 const dbRef = firebase.database().ref(`${userId}/`);
-                
-                dbRef.update({ 
+
+                dbRef.update({
                     name: `${user.user.displayName}`,
                     email: `${user.user.email}`,
-                 });
+                });
+//                 dbRef.update({ 
+//                     name: `${user.user.displayName}`,
+//                     email: `${user.user.email}`,
+//                  });
             });
     }
 
@@ -77,7 +81,6 @@ class Landing extends React.Component {
             userName: "",
         })
     }
-    
     render() {
         return (
             <div>
