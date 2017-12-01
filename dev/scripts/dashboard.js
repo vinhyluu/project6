@@ -11,7 +11,7 @@ class Dashboard extends React.Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount() { 
         this.setState({
             userKey: this.props.userKey,
             userName: this.props.userName,
