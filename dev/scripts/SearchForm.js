@@ -186,7 +186,7 @@ class MakeUpProducts extends React.Component {
     }
 }
 
-<<<<<<< HEAD
+
 const MakeUpProducts = (props)=>{
     console.log(props.data)
     return(
@@ -208,6 +208,4 @@ const MakeUpProducts = (props)=>{
    }
    
 export default SearchForm
-=======
-export default SearchForm
->>>>>>> cd67f0e8a17a3e3b156ba6ce91755517796bb9b3
+
