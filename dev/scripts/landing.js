@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Form from './form';
 import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
@@ -91,6 +92,7 @@ class Landing extends React.Component {
                         userKey={this.state.userKey}
                         userName={this.state.userName} />}
                 <a href="" onClick={this.logout}>Logout</a>
+                <Form/>
             </div>
         )
     }
