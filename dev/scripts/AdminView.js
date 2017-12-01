@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from './firebase';
+import EditingBox from './EditingBox';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-class ProfileView extends React.Component{
+class AdminView extends React.Component{
     constructor(){
         super();
         this.state={
-            currentItems: []
+            currentItems: [],
+            active: false
         }
         this.removeItem = this.removeItem.bind(this);
+        this.toggleClass = this.toggleClass.bind(this)
     }
 
     componentDidMount(){
@@ -52,16 +55,39 @@ class ProfileView extends React.Component{
         })
     }
 
+    toggleClass(){
+        const currentState = this.state.active;
+        this.setState({ active: !currentState})
+    }
+
     render(){
         return(
             <div>
+                <div>
+                    <div>
+                    <img src={`${this.state.imageUrl}`} alt=""/>
+                    <button className={this.state.active ? 'your_className': null} onClick={this.toggleClass}><i className="fa fa-plus" aria-hidden="true"></i></button>
+                    </div>
+
+                    <EditingBox/>
+                    
+                    <p>{this.state.note}</p>
+                    <a href={`${this.state.twitter}`}>
+                        <i className="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href={`${this.state.instagram}`}>
+                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                    </a>
+                
+                </div>
+                
                 {this.state.currentItems.map((item)=>{
                     return(
                     <div key={item.selectionKey}>
                         <div className="wrapper">
-                            <img src={item.imageUrl} alt=""/>
+                            <img src={item.imageUrl} alt=""/> 
                             <h1>{item.brandTitle}</h1>
-                            <p>{item.productDescription}</p>
+                             <p>{item.productDescription}</p>
                             <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
                         </div>
                     </div>
@@ -72,4 +98,4 @@ class ProfileView extends React.Component{
     }
 }
 
-export default ProfileView
+export default AdminView

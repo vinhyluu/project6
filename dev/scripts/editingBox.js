@@ -34,7 +34,10 @@ export default class EditingBox extends React.Component{
         })
     }
     render(){
+<<<<<<< HEAD
         // console.log(this.props.note)
+=======
+>>>>>>> 6eff353f3fea5192ab873b9b6d12cd5cccd98646
         let editingTemp = (
         
             <div>
@@ -62,3 +65,4 @@ export default class EditingBox extends React.Component{
     }
 
 }
+
