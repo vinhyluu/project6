@@ -37,13 +37,11 @@ class Form extends React.Component {
                     imageUrl: newImageUrl,
                     note: newNote
                 })
-                console.log(this.state)
             }
         });
     }
     
     handleClick(e) {
-        console.log('clicked');
         e.preventDefault();
 
         const newTwitter = this.twitter.value;
@@ -58,7 +56,6 @@ class Form extends React.Component {
         });
 
         if (document.getElementById("userImage").value != "") {
-            console.log("you have a file");
             const file = document.getElementById("userImage").files[0];
 
             const storageRef = firebase.storage().ref(file.name);
@@ -67,7 +64,6 @@ class Form extends React.Component {
 
                 storageRef.getDownloadURL()
                     .then(function (result) {
-                        console.log(result);
                         this.setState({
                             imageUrl: result,
                         });

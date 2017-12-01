@@ -24,14 +24,12 @@ class Landing extends React.Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                console.log("existing user");
                 this.setState({
                     loggedIn: true,
                     userKey: user.uid,
                     userName: user.displayName,
                 });
             } else {
-                console.log("you're not a user");
                 this.setState({
                     loggedIn: false,
                     userKey: "",
@@ -46,13 +44,12 @@ class Landing extends React.Component {
 
     login(e) {
         e.preventDefault();
-        console.log('sign in');
         firebase.auth().signInWithPopup(provider)
-            .then((user) => {
+            .then((data) => {
                 this.setState({
                     loggedIn: true,
-                    userKey: user.uid,
-                    userName: user.displayName,
+                    userKey: data.user.uid,
+                    userName: data.user.displayName,
                 });
 
                 const userId = firebase.auth().currentUser.uid;
@@ -60,15 +57,14 @@ class Landing extends React.Component {
                 const dbRef = firebase.database().ref(`${userId}/`);
 
                 dbRef.update({
-                    name: `${user.user.displayName}`,
-                    email: `${user.user.email}`,
+                    name: `${data.user.displayName}`,
+                    email: `${data.user.email}`,
                 });
             });
     }
 
     logout(e) {
         e.preventDefault();
-        console.log('logout');
         firebase.auth().signOut()
             .then((user) => {
             });
@@ -80,6 +76,8 @@ class Landing extends React.Component {
     }
     render() {
         return (
+            // when the user signs and and if they have an existing account, direct them to the admin page
+            //if the user doesn't haev an existing account, direct them to the first time users page 
             <div>
                 {this.state.loggedIn === false
                     ? <section>
