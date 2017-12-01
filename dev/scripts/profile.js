@@ -1,74 +1,63 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import firebase from 'firebase';
+import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-const config = {
-    apiKey: "AIzaSyAwexiXibtCy-1vAH6V_LF2mkrrLlgDQQo",
-    authDomain: "makeup-fun.firebaseapp.com",
-    databaseURL: "https://makeup-fun.firebaseio.com",
-    projectId: "makeup-fun",
-    storageBucket: "makeup-fun.appspot.com",
-    messagingSenderId: "1012365554610"
-};
-firebase.initializeApp(config);
-
-
 const provider = new firebase.auth.GoogleAuthProvider();
-class PetList extends React.Component {
-
+class Profile extends React.Component {
+ 
     constructor() {
         super();
         this.state = {
-            loggedIn: false,
-            userKey: "",
+            // loggedIn: false,
+            // userKey: "",
             twitter: "",
             instagram: "",
             blurb: "",
             imageUrl: "",
         }
-        this.login = this.login.bind(this);
+        // this.login = this.login.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
     
-    componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
-            console.log(user.email);
-            if (user) {
-                // console.log("existing user");
-                this.setState({
-                    loggedIn: true,
-                    userKey: user.email,
-                });
-            } else {
-                // console.log("you're not a user");
-                this.setState({
-                    loggedIn: false,
-                    userKey: "",
-                });
-            }
-        });
-    }
-    login(e) {
-        e.preventDefault();
-        console.log('sign in');
-        firebase.auth().signInWithPopup(provider)
-            .then((user) => {
-                console.log(user);
-                this.setState({
-                    loggedIn: true,
-                    userKey: user.email,
-                })
-            })
-    }
-    logout(e) {
-        e.preventDefault();
-        console.log('logout');
-        firebase.auth().signOut()
-            .then((user) => {
-                console.log(user);
-            });
-    }
+    // componentDidMount() {
+    //     firebase.auth().onAuthStateChanged((user) => {
+    //         console.log(user.email);
+    //         if (user) {
+    //             // console.log("existing user");
+    //             this.setState({
+    //                 loggedIn: true,
+    //                 userKey: user.email,
+    //             });
+    //         } else {
+    //             // console.log("you're not a user");
+    //             this.setState({
+    //                 loggedIn: false,
+    //                 userKey: "",
+    //             });
+    //         }
+    //     });
+    // }
+    // login(e) {
+    //     e.preventDefault();
+    //     console.log('sign in');
+    //     firebase.auth().signInWithPopup(provider)
+    //         .then((user) => {
+    //             console.log(user);
+    //             this.setState({
+    //                 loggedIn: true,
+    //                 userKey: user.email,
+    //             })
+    //         })
+    // }
+    // logout(e) {
+    //     e.preventDefault();
+    //     console.log('logout');
+    //     firebase.auth().signOut()
+    //         .then((user) => {
+    //             console.log(user);
+    //         });
+    // }
     handleClick(e) {
         console.log('clicked');
         e.preventDefault();
@@ -179,3 +168,5 @@ class PetList extends React.Component {
         )
     }
 }
+
+export default Profile;

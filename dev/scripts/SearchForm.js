@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class SearchForm extends React.Component {
@@ -62,16 +63,52 @@ class SearchForm extends React.Component {
                 searchByBrand: "",
             })
         }
+
+        const test = [];
+
         axios.get(`${searchQuery}`)
             .then((res) => {
                 const results = res.data
+                test.push(results);
                 this.pageResults(results)
             }).catch((err) => {
                 console.log(err)
             })
+
+            
+
+            
+
+            // dbRef.on("value", (res) => {
+            //     const data = res.val();
+
+                
+            //     console.log(test);
+            //     for (let i in test) console.log(test[i], i);
+               
+            //     console.log(filteredArray);
+            // })
+
         }
+        
         pageResults(results) {
-            this.setState({ results })
+            // const data = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections").val()
+            // const existingId = [];
+
+            // for (let key in data) {
+            //     const value = data[key].brandTitle;
+            //     existingId.push(value);
+            // }
+
+            let existingIds = [8, 9, 11, 12]
+
+            let filteredArray = results.filter(function (item) {
+                return existingIds.indexOf(item["id"]) == -1;
+            })
+
+            this.setState({     
+                results: filteredArray
+            })
         }
 
     render() {
@@ -95,33 +132,58 @@ class SearchForm extends React.Component {
                         </div>
                     </form>
                 </div>
-                <ul className="returnedData">
+                <div className="returnedData">
                     {this.state.results.map((brand, index) => {
                         return <MakeUpProducts data={brand} key={index} />
                     })}
-                </ul>
+                </div>
             </div>
         )
     }
 }
 
-const MakeUpProducts = (props) => {
-    console.log(props.data)
-    return (
-        <ul>
-            <li className="brandImage">
-                <img src={`${props.data.image_link}`} alt="cool beans" />
-            </li>
-            <li className="brandTitle">
-                {props.data.brand}
-            </li>
-            <li className="brandType">
-                {props.data.name}
-            </li>
-            <li>
-                <a href={`${props.data.product_link}`} target="_blank">Buy Me</a>
-            </li>
-        </ul>
-    )
+class MakeUpProducts extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            userSelect: {
+                imageUrl: "",
+                brandTitle: "",
+                productDescription: "",
+                productUrl: "",
+                selectionKey: "",
+            }
+        }
+        this.addItem = this.addItem.bind(this);
+    }
+
+    addItem(e) {
+        e.preventDefault();
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections")
+        
+        const newSelection = {}
+        const newRef = dbRef.push(newSelection)
+            newRef.set({
+                imageUrl: this.props.data.image_link,
+                brandTitle: this.props.data.brand,
+                productDescription: this.props.data.name,
+                productUrl: this.props.data.product_link,
+                selectionKey: newRef.key
+            });
+        }
+
+    render() {
+        return (
+            <div>
+                <a href="" onClick={this.addItem}>TEST</a>
+                <img src={this.props.data.image_link} alt="" />
+                <h3>{this.props.data.brand}</h3>
+                <p>{this.props.data.name}</p>
+                <a href={`${this.props.data.product_link}`} target="_blank">Buy Me</a>
+                <p>{this.props.data.id}</p>
+            </div>
+        )
+    }
 }
+
 export default SearchForm

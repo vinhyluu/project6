@@ -1,20 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import firebase from 'firebase';
+import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
-// import Login from './login';
 
-const config = {
-    apiKey: "AIzaSyAwexiXibtCy-1vAH6V_LF2mkrrLlgDQQo",
-    authDomain: "makeup-fun.firebaseapp.com",
-    databaseURL: "https://makeup-fun.firebaseio.com",
-    projectId: "makeup-fun",
-    storageBucket: "makeup-fun.appspot.com",
-    messagingSenderId: "1012365554610"
-};
-firebase.initializeApp(config);
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -50,6 +40,9 @@ class Landing extends React.Component {
         });
     }
 
+    componentDidMount() {
+    }
+
     login(e) {
         e.preventDefault();
         console.log('sign in');
@@ -63,20 +56,13 @@ class Landing extends React.Component {
 
                 const userId = firebase.auth().currentUser.uid;
 
-                console.log(this.state.userName);
+                const dbRef = firebase.database().ref(`${userId}/`);
 
-                const dbRef = firebase.database().ref(`${userId}`);
-
-                // dbRef.update({ name: this.state.userName });
+                dbRef.update({
+                    name: `${user.user.displayName}`,
+                    email: `${user.user.email}`,
+                });
             });
-
-
-        // const dbRef = firebase.database().ref(`user/${this.state.userKey}`);
-
-        // const userDetails = {};
-
-        // const newUser = dbRef.push(userDetails);
-        // newUser.set(`uid: ${this.state.userKey}`);
     }
 
     logout(e) {
@@ -91,6 +77,7 @@ class Landing extends React.Component {
             userName: "",
         })
     }
+
     render() {
         return (
             <div>
