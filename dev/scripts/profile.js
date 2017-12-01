@@ -126,7 +126,6 @@ class Profile extends React.Component {
                     </div>
                     <input className="submit" type="submit" value="Add" />
                 </form>
-               
                 <div>
                     <img src={`${this.state.imageUrl}`} alt=""/>
                     <p>{this.state.blurb}</p>

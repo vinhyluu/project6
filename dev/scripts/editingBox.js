@@ -38,9 +38,8 @@ export default class EditingBox extends React.Component{
         let editingTemp = (
         
             <div>
-               <p>{this.props.note}</p>  
+                <p>{this.props.note}</p>  
             </div>
-           
         )
         if (this.state.editing){
             editingTemp = (
@@ -54,8 +53,8 @@ export default class EditingBox extends React.Component{
         }
         return(
             <div className="editingBox">
-                 <i className="fa fa-edit" onClick={()=>this.setState({editing:true})}></i>
-                 {editingTemp}
+                <i className="fa fa-edit" onClick={()=>this.setState({editing:true})}></i>
+                {editingTemp}
     
             </div>
         )
