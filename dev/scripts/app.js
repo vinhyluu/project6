@@ -13,12 +13,12 @@ class App extends React.Component {
     render() {
       return (
         <div>
-          <Nav />
           <Landing />
           <Profile />
           <h1>Makeup App</h1>
           <SearchForm />
           <ProfileView />
+          <Nav />
         </div>
       )
     }
