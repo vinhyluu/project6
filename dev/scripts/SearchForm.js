@@ -75,31 +75,10 @@ class SearchForm extends React.Component {
                 console.log(err)
             })
 
-            
-
-            
-
-            // dbRef.on("value", (res) => {
-            //     const data = res.val();
-
-                
-            //     console.log(test);
-            //     for (let i in test) console.log(test[i], i);
-               
-            //     console.log(filteredArray);
-            // })
-
         }
         
         pageResults(results) {
-            // const data = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections").val()
-            // const existingId = [];
-
-            // for (let key in data) {
-            //     const value = data[key].brandTitle;
-            //     existingId.push(value);
-            // }
-
+          
             let existingIds = [8, 9, 11, 12]
 
             let filteredArray = results.filter(function (item) {
@@ -187,25 +166,6 @@ class MakeUpProducts extends React.Component {
 }
 
 
-const MakeUpProducts = (props)=>{
-    console.log(props.data)
-    return(
-      <ul>
-        <li className="brandImage">
-          <img src={`${props.data.image_link}`} alt="cool beans"/>
-        </li>
-        <li className="brandTitle">
-            {props.data.brand}
-        </li>
-        <li className="brandType">
-            {props.data.name}
-        </li>
-        <li>
-            <a href={`${props.data.product_link}`} target="_blank">Buy Me</a>
-        </li>
-      </ul>
-    )
-   }
    
 export default SearchForm
 

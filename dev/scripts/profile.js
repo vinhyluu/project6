@@ -118,6 +118,7 @@ class Profile extends React.Component {
                         <input type="text" name="instagram" ref={ref => this.instagram = ref} />
                     </div>
                     <div className="note">
+                    
                         <label htmlFor="profileNote"></label>
                         <textarea name="profileNote" id="" maxLength="280" ref={ref => this.note = ref}></textarea>
                     </div>
