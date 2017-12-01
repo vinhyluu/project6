@@ -62,6 +62,10 @@ class Landing extends React.Component {
                     name: `${user.user.displayName}`,
                     email: `${user.user.email}`,
                 });
+//                 dbRef.update({ 
+//                     name: `${user.user.displayName}`,
+//                     email: `${user.user.email}`,
+//                  });
             });
     }
 
@@ -77,7 +81,6 @@ class Landing extends React.Component {
             userName: "",
         })
     }
-
     render() {
         return (
             <div>
