@@ -128,10 +128,10 @@ class Profile extends React.Component {
                     <img src={`${this.state.imageUrl}`} alt=""/>
                     <p>{this.state.blurb}</p>
                 
-                    <a href={`${this.state.twitter}`}>
+                    <a href={`https://twitter.com/${this.state.twitter}`}>
                         <i className="fa fa-twitter" aria-hidden="true"></i>
                     </a>
-                    <a href={`${this.state.instagram}`}>
+                    <a href={`https://www.instagram.com/${this.state.instagram}`}>
                         <i className="fa fa-instagram" aria-hidden="true"></i>
                     </a>
                 
