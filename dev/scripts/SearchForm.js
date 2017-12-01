@@ -74,11 +74,9 @@ class SearchForm extends React.Component {
             }).catch((err) => {
                 console.log(err)
             })
-
         }
         
         pageResults(results) {
-          
             let existingIds = [8, 9, 11, 12]
 
             let filteredArray = results.filter(function (item) {
