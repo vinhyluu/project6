@@ -13,7 +13,7 @@ class Landing extends React.Component {
         super();
         this.state = {
             loggedIn: false,
-            userKey: "",
+            uid: "",
             userName: "",
         }
         this.login = this.login.bind(this);
@@ -26,18 +26,21 @@ class Landing extends React.Component {
                 console.log("existing user");
                 this.setState({
                     loggedIn: true,
-                    userKey: user.uid,
+                    uid: user.uid,
                     userName: user.displayName,
                 });
             } else {
                 console.log("you're not a user");
                 this.setState({
                     loggedIn: false,
-                    userKey: "",
+                    uid: "",
                     userName: "",
                 });
             }
         });
+    }
+
+    componentDidMount() {
     }
 
     login(e) {
@@ -47,7 +50,7 @@ class Landing extends React.Component {
             .then((user) => {
                 this.setState({
                     loggedIn: true,
-                    userKey: user.uid,
+                    uid: user.uid,
                     userName: user.displayName,
                 });
 
@@ -70,7 +73,7 @@ class Landing extends React.Component {
             });
         this.setState({
             loggedIn: false,
-            userKey: "",
+            uid: "",
             userName: "",
         })
     }
@@ -88,7 +91,7 @@ class Landing extends React.Component {
                         </div>
                     </section>
                     : <Dashboard
-                        userKey={this.state.userKey}
+                        uid={this.state.uid}
                         userName={this.state.userName} />}
                 <a href="" onClick={this.logout}>Logout</a>
             </div>
