@@ -146,7 +146,7 @@ class MakeUpProducts extends React.Component {
                 productDescription: this.props.data.name,
                 productUrl: this.props.data.product_link,
                 selectionKey: newRef.key,
-                active: false
+                active: false,
             });
         }
 

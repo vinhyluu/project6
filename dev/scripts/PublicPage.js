@@ -3,19 +3,33 @@ import ReactDOM from 'react-dom';
 import firebase from './firebase';
 
 class PublicPage extends React.Component{
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            userBackground: "",
+            publicItems: [],
         }
     }
 
-    componentDidMount(){
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1");
+    componentDidMount() {
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+
+        const deactiveItem = [];
         dbRef.on("value", (res) => {
             const data = res.val();
+            for (let key in data) {
+                const value = data[key];
+                deactiveItem.push(value);
+            }
+
+            const activeItems = [];
+            for (var i = 0; i < deactiveItem.length; i++) {
+                if (deactiveItem[i].active === true) {
+                    activeItems.push(deactiveItem[i]);
+                }
+            }
+
             this.setState({
-                userBackground: data.backgroundColor
+                publicItems: activeItems,
             })
         })
     }
@@ -23,7 +37,16 @@ class PublicPage extends React.Component{
 render(){
     return(
         <div>
-         hi
+            {this.state.publicItems.map((items) => {
+                return(
+                    <div key={items.selectionKey}>
+                        <img src={items.imageUrl} alt="" />
+                        <h3>{items.brandTitle}</h3>
+                        <p>{items.productDescription}</p>
+                        <a href={items.productUrl}>Shop</a>
+                    </div>
+                )
+            })}
         </div>
         )
     }
