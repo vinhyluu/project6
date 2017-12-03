@@ -37,7 +37,16 @@ class PublicPage extends React.Component{
 render(){
     return(
         <div>
-            hi
+            {this.state.publicItems.map((items) => {
+                return(
+                    <div key={items.selectionKey}>
+                        <img src={items.imageUrl} alt="" />
+                        <h3>{items.brandTitle}</h3>
+                        <p>{items.productDescription}</p>
+                        <a href={items.productUrl}>Shop</a>
+                    </div>
+                )
+            })}
         </div>
         )
     }
