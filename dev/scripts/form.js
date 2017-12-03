@@ -19,7 +19,7 @@ class Form extends React.Component {
     }
     
     componentDidMount() {
-        var dbRef = firebase.database().ref();
+        const dbRef = firebase.database().ref(`${this.props.userKey}`);
 
         dbRef.on('value', (snapshot) => {
             const newState=[];
@@ -47,7 +47,7 @@ class Form extends React.Component {
         const newTwitter = this.twitter.value;
         const newInstagram = this.instagram.value;
         const newNote = this.note.value
-        const dbRef = firebase.database().ref();
+        const dbRef = firebase.database().ref(`${this.props.userKey}`);
 
         this.setState({
             twitter: newTwitter,
@@ -72,7 +72,8 @@ class Form extends React.Component {
                         })
                     }.bind(this));
             }.bind(this));
-        } else {
+        } 
+        else {
             dbRef.update({
                 twitter: newTwitter,
                 instagram: newInstagram,
