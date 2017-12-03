@@ -100,12 +100,20 @@ class Form extends React.Component {
                         <textarea name="profileNote" id="" maxLength="280" ref={ref => this.note = ref}></textarea>
                     </div>
                     <div className="image">
-                        <input type="file" name="userImage[]" id="userImage" />
+                        <input type="file" name="userImage[]" id="userImage" ref={ref => this.imageUrl = ref}/>
                     </div>
                     <input className="submit" type="submit" value="Add" />
-                </form>
-               
-                
+                </form>  
+                <div>
+                    <img src={`${this.state.imageUrl}`} alt=""/>
+                    <p>{this.state.note}</p>
+                    <a href={`https://twitter.com/${this.state.twitter}`}>
+                        <i className="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a href={`https://www.instagram.com/${this.state.instagram}`}>
+                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                    </a>                
+                </div>
             </div>
         )
     }
