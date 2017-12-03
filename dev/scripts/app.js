@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Landing from './landing';
 import SearchForm from './SearchForm';
-import ProfileView from './ProfileView';
+// import ProfileView from './ProfileView';
 import Nav from './nav';
 import AdminView from './AdminView';
 import PublicPage from './PublicPage';
@@ -14,11 +14,12 @@ class App extends React.Component {
     render() {
       return (
         <div>
+          <Nav/>
           <Landing />
           <h1>Makeup App</h1>
           <SearchForm />
-          <ProfileView />
-          <Nav />
+          {/* <ProfileView /> */}
+          {/* <Nav /> */}
           <AdminView />
           <PublicPage/>
         </div>
