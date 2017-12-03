@@ -15,13 +15,15 @@ class AdminView extends React.Component{
         this.removeItem = this.removeItem.bind(this);
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleColor = this.toggleColor.bind(this);
+        this.addPublic = this.addPublic.bind(this);
+        this.removePublic = this.removePublic.bind(this);
     }
 
     componentDidMount(){
         const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
 
         const userItems = [];
-        dbRef.on("value", (res) => {
+        dbRef.once("value", (res) => {
             const data = res.val();
 
             for (let key in data) {
@@ -55,6 +57,24 @@ class AdminView extends React.Component{
                 currentItems: userItems
             })
         })
+    }
+
+    addPublic(e, key) {
+        e.preventDefault();
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
+
+        dbRef.update({
+            active: true,
+        });
+    }
+
+    removePublic(e, key) {
+        e.preventDefault();
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
+
+        dbRef.update({
+            active: false,
+        });
     }
 
     toggleClass(){
@@ -100,7 +120,7 @@ class AdminView extends React.Component{
                             <a href={`${this.state.instagram}`}>
                                 <i className="fa fa-instagram" aria-hidden="true"></i>
                             </a>
-                    </div>
+                        </div>
                     
                     {this.state.currentItems.map((item)=>{
                         return(
@@ -110,6 +130,8 @@ class AdminView extends React.Component{
                                 <h1>{item.brandTitle}</h1>
                                 <p>{item.productDescription}</p>
                                 <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
+                                <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}>Add Public</a>
+                                <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}>Remove Public</a>
                             </div>
                         </div>
                         )
