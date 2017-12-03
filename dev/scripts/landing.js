@@ -75,7 +75,7 @@ class Landing extends React.Component {
         return (
             <div>
                 {this.state.loggedIn === false
-                    ? <section>
+                    ? <section className="landingContainer">
                         <div>
 
                         </div>
@@ -86,8 +86,6 @@ class Landing extends React.Component {
                     : <Dashboard
                         userKey={this.state.userKey}
                         userName={this.state.userName} />}
-                <a href="" onClick={this.logout}>Logout</a>
-                <Form/>
             </div>
         )
     }

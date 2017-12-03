@@ -13,10 +13,10 @@ class App extends React.Component {
       return (
         <div>
           <Landing />
-          <h1>Makeup App</h1>
-          <SearchForm />
-          <AdminView />
-          <PublicPage/>
+          {/* <h1>Makeup App</h1> */}
+          {/* <SearchForm /> */}
+          {/* <AdminView /> */}
+          {/* <PublicPage/> */}
         </div>
       )
     }

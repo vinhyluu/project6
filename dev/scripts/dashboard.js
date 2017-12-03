@@ -1,5 +1,9 @@
 import React from 'react';
 import firebase from 'firebase';
+import Form from './form';
+import AdminView from './adminview';
+import SearchForm from './searchform';
+import PublicPage from './publicpage';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class Dashboard extends React.Component {
@@ -52,12 +56,50 @@ class Dashboard extends React.Component {
             <div>
                 {this.state.existingUser === false
                     ? <section>
-                        <h1>Not existing user</h1>
+                        <Form />
                         <button onClick={this.editInfo}>BUTTON</button>
                     </section>
-                    : <h1>existing user</h1>}
-                <a href="" onClick={this.logout}>Logout</a>
+                    : <TopNav />}
             </div>
+        )
+    }
+}
+
+class TopNav extends React.Component {
+    constructor() {
+        super();
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(e) {
+        e.preventDefault();
+        firebase.auth().signOut()
+            .then((user) => {
+            });
+        this.setState({
+            loggedIn: false,
+            userKey: "",
+            userName: "",
+        })
+    }
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    <ul>
+                        <li><Link to={'/AdminView'}>Dashboard</Link></li>
+                        <li><Link to={'/SearchForm'}>Search</Link></li>
+                        <li><Link to={'/PublicPage'}>Public Page</Link></li>
+                        <li onClick={this.logout}>Logout</li>
+                    </ul>
+                    <Switch>
+                        <Route exact path='/AdminView' component={AdminView} />
+                        <Route exact path='/SearchForm' component={SearchForm} />
+                        <Route exact path='/PublicPage' component={PublicPage} />
+                    </Switch>
+                </div>
+            </Router>
         )
     }
 }
