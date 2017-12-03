@@ -88,7 +88,6 @@ class AdminView extends React.Component{
             <div>
                 <div>
                     <div>
-                      
                         <EditingBox />
                         <p>{this.state.note}</p>
                         <a href={`${this.state.twitter}`}>
@@ -113,8 +112,6 @@ class AdminView extends React.Component{
                         )
                     })}
                 </div>
-                {/* <Link>
-                </Link> */}
                 <div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>
