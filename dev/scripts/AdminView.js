@@ -23,7 +23,7 @@ class AdminView extends React.Component{
         const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
 
         const userItems = [];
-        dbRef.once("value", (res) => {
+        dbRef.on("value", (res) => {
             const data = res.val();
 
             for (let key in data) {
@@ -101,6 +101,7 @@ class AdminView extends React.Component{
             height: "50px",
         }
 
+
         return(
             <div>
                 <div>
@@ -119,7 +120,7 @@ class AdminView extends React.Component{
                             <a href={`${this.state.instagram}`}>
                                 <i className="fa fa-instagram" aria-hidden="true"></i>
                             </a>
-                        </div>
+                    </div>
                     
                     {this.state.currentItems.map((item)=>{
                         return(
@@ -129,8 +130,8 @@ class AdminView extends React.Component{
                                 <h1>{item.brandTitle}</h1>
                                 <p>{item.productDescription}</p>
                                 <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
-                                <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}>Add Public</a>
-                                <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}>Remove Public</a>
+                                                            <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}>Add Public</a>
+                            <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}>Remove Public</a>
                             </div>
                         </div>
                         )
