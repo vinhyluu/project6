@@ -77,7 +77,7 @@ class SearchForm extends React.Component {
         }
         
         pageResults(results) {
-            let existingIds = [8, 9, 11, 12]
+            let existingIds = []
 
             let filteredArray = results.filter(function (item) {
                 return existingIds.indexOf(item["id"]) == -1;
@@ -91,7 +91,6 @@ class SearchForm extends React.Component {
     render() {
         return (
             <div>
-                <Nav />
                 <div>
                     <form action="" onSubmit={this.handleSubmit}>
                         <div className="searchContainer">

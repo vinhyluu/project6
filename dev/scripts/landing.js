@@ -6,7 +6,6 @@ import firebase from './firebase';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import Dashboard from './dashboard';
 
-
 const provider = new firebase.auth.GoogleAuthProvider();
 
 class Landing extends React.Component {

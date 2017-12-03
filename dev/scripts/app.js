@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Nav from './nav.js';
 import Landing from './landing';
 import SearchForm from './SearchForm';
 import AdminView from './AdminView';

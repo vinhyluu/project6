@@ -113,8 +113,7 @@ class AdminView extends React.Component{
                         )
                     })}
                 </div>
-                {/* <Link>
-                </Link> */}
+
                 <div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>
