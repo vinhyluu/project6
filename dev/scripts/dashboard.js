@@ -1,5 +1,9 @@
 import React from 'react';
 import firebase from 'firebase';
+import Form from './form';
+import AdminView from './adminview';
+import SearchForm from './searchform';
+import PublicPage from './publicpage';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class Dashboard extends React.Component {
@@ -22,17 +26,14 @@ class Dashboard extends React.Component {
             const data = res.val();
             
             const userStanding = data.existingUser;
-            console.log(userStanding);
             if(data.existingUser === true){
                 this.setState({
                     existingUser: true
                 })
-                console.log(userStanding);
             }else{
                 this.setState({
                     existingUser: false
                 })
-                console.log(userStanding);
             }   
         })
     }
@@ -55,14 +56,73 @@ class Dashboard extends React.Component {
             <div>
                 {this.state.existingUser === false
                     ? <section>
-                        <h1>Not existing user</h1>
+                        <Form userkey={this.props.userKey} />
                         <button onClick={this.editInfo}>BUTTON</button>
                     </section>
-                    : <h1>existing user</h1>}
-                <a href="" onClick={this.logout}>Logout</a>
+                    : <TopNav userkey={this.props.userKey} />}
             </div>
         )
     }
 }
 
+class TopNav extends React.Component {
+    constructor() {
+        super();
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(e) {
+        e.preventDefault();
+        firebase.auth().signOut()
+            .then((user) => {
+            });
+        this.setState({
+            loggedIn: false,
+            userKey: this.props.userkey,
+            userName: "",
+        })
+    }
+
+    render() {
+        return (
+            <Router>
+                <div>
+                    <ul>
+                        <li><Link to={'/AdminView'}>Dashboard</Link></li>
+                        <li><Link to={'/SearchForm'}>Search</Link></li>
+                        <li><Link to={'/PublicPage'}>Public Page</Link></li>
+                        <li onClick={this.logout}>Logout</li>
+                    </ul>
+                    <Switch>
+                        <Route exact path="/AdminView" render={props => <AdminView {...props} userkey={this.props.userkey}/>}/>
+                        <Route exact path="/SearchForm" render={props => <SearchForm {...props} userkey={this.props.userkey}/>}/>
+                        <Route exact path="/PublicPage" render={props => <PublicPage {...props} userkey={this.props.userkey}/>}/>
+                        {/* <Route exact path='/SearchForm' component={SearchForm} />
+                        <Route exact path='/PublicPage' component={PublicPage} /> */}
+                    </Switch>
+                </div>
+            </Router>
+        )
+    }
+}
+
 export default Dashboard;
+
+// <Router>
+//     <div className=“wrapper”>
+//           <Switch>
+//         <Route
+//             exact path=“/”
+//               render={props => <LandingPage {...props} formSubmit={this.getMeetups} />}
+//         />
+//             <Route
+//             exact path=“/meetups”
+//               render={props => <Meetups {...props} data={this.state.meetups} onClick={this.getRestaurantRefs} />}
+//         />
+//             <Route
+//             exact path=“/restaurants”
+//               render={props => <Restaurants {...props} data={this.state.restaurants} />}
+//         />
+//           </Switch>
+//         </div>
+//       </Router >
