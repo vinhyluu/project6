@@ -136,7 +136,7 @@ class MakeUpProducts extends React.Component {
 
     addItem(e) {
         e.preventDefault();
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections")
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections")
         
         const newSelection = {}
         const newRef = dbRef.push(newSelection)

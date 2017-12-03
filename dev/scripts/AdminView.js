@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import firebase from './firebase';
 import EditingBox from './EditingBox';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-
-class AdminView extends React.Component {
-    constructor() {
+class AdminView extends React.Component{
+    constructor(){
         super();
         this.state = {
             currentItems: [],
@@ -17,34 +16,30 @@ class AdminView extends React.Component {
         this.addPublic = this.addPublic.bind(this);
         this.removePublic = this.removePublic.bind(this);
     }
-
-    componentDidMount() {
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
-
+    componentDidMount(){
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
         const userItems = [];
         dbRef.once("value", (res) => {
             const data = res.val();
-
             for (let key in data) {
                 const value = data[key];
                 userItems.push(value);
             }
             this.setState({
-                currentItems: userItems
+                currentItems: userItems,
+                userkey: this.props.userkey
             })
         })
     }
-
+    
     removeItem(e, key) {
         e.preventDefault();
-        const toRemove = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
+        const toRemove = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
         toRemove.remove();
-
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
         const newUserItems = [];
         dbRef.on("value", (res) => {
             const data = res.val();
-
             for (let key in data) {
                 const value = data[key];
                 newUserItems.push(value);
@@ -54,36 +49,30 @@ class AdminView extends React.Component {
             })
         })
     }
-
     addPublic(e, key) {
         e.preventDefault();
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
-
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
         dbRef.update({
             active: true,
         });
     }
-
     removePublic(e, key) {
         e.preventDefault();
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
-
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
         dbRef.update({
             active: false,
         });
     }
-
-    toggleClass() {
+    toggleClass(){
         const currentState = this.state.active;
-        this.setState({ active: !currentState })
+        this.setState({ active: !currentState})
     }
-
-    toggleColor(e, colorValue) {
+    toggleColor(e, colorValue){
         e.preventDefault();
         this.setState({
             testColor: colorValue
         })
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1");
+        const dbRef = firebase.database().ref(`${this.props.userkey}`);
         dbRef.update({
             backgroundColor: colorValue
         })
@@ -96,14 +85,12 @@ class AdminView extends React.Component {
             width: "50px",
             height: "50px",
         }
-
-
         return (
             <div>
                 <div>
                     <div>
+                      
                         <EditingBox />
-
                         <p>{this.state.note}</p>
                         <a href={`${this.state.twitter}`}>
                             <i className="fa fa-twitter" aria-hidden="true"></i>
@@ -112,7 +99,6 @@ class AdminView extends React.Component {
                             <i className="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                     </div>
-
                     {this.state.currentItems.map((item) => {
                         return (
                             <div key={item.selectionKey}>
@@ -128,6 +114,8 @@ class AdminView extends React.Component {
                         )
                     })}
                 </div>
+                {/* <Link>
+                </Link> */}
                 <div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>
@@ -138,5 +126,4 @@ class AdminView extends React.Component {
         )
     }
 }
-
 export default AdminView

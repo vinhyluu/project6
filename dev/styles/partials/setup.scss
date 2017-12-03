@@ -10,3 +10,37 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     width: 80%;
     margin: 0 auto;
 }
+
+/* Type Styles */
+
+/* Heading */
+h1, 
+h2,
+h3 {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Paragraph */
+p {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* Links */
+
+a {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    text-decoration: none;
+}
+
+/* List */
+
+ul {
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+}

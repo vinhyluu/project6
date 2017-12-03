@@ -56,10 +56,10 @@ class Dashboard extends React.Component {
             <div>
                 {this.state.existingUser === false
                     ? <section>
-                        <Form />
+                        <Form userkey={this.props.userKey} />
                         <button onClick={this.editInfo}>BUTTON</button>
                     </section>
-                    : <TopNav />}
+                    : <TopNav userkey={this.props.userKey} />}
             </div>
         )
     }
@@ -78,7 +78,7 @@ class TopNav extends React.Component {
             });
         this.setState({
             loggedIn: false,
-            userKey: "",
+            userKey: this.props.userkey,
             userName: "",
         })
     }
@@ -94,9 +94,11 @@ class TopNav extends React.Component {
                         <li onClick={this.logout}>Logout</li>
                     </ul>
                     <Switch>
-                        <Route exact path='/AdminView' component={AdminView} />
-                        <Route exact path='/SearchForm' component={SearchForm} />
-                        <Route exact path='/PublicPage' component={PublicPage} />
+                        <Route exact path="/AdminView" render={props => <AdminView {...props} userkey={this.props.userkey}/>}/>
+                        <Route exact path="/SearchForm" render={props => <SearchForm {...props} userkey={this.props.userkey}/>}/>
+                        <Route exact path="/PublicPage" render={props => <PublicPage {...props} userkey={this.props.userkey}/>}/>
+                        {/* <Route exact path='/SearchForm' component={SearchForm} />
+                        <Route exact path='/PublicPage' component={PublicPage} /> */}
                     </Switch>
                 </div>
             </Router>
@@ -105,3 +107,22 @@ class TopNav extends React.Component {
 }
 
 export default Dashboard;
+
+// <Router>
+//     <div className=“wrapper”>
+//           <Switch>
+//         <Route
+//             exact path=“/”
+//               render={props => <LandingPage {...props} formSubmit={this.getMeetups} />}
+//         />
+//             <Route
+//             exact path=“/meetups”
+//               render={props => <Meetups {...props} data={this.state.meetups} onClick={this.getRestaurantRefs} />}
+//         />
+//             <Route
+//             exact path=“/restaurants”
+//               render={props => <Restaurants {...props} data={this.state.restaurants} />}
+//         />
+//           </Switch>
+//         </div>
+//       </Router >

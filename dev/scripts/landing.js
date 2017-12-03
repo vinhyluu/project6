@@ -79,7 +79,7 @@ class Landing extends React.Component {
                         <div>
 
                         </div>
-                        <div className="wrapper">
+                        <div className="landingControls">
                             <a href="" onClick={this.login}>Sign in with Google</a>
                         </div>
                     </section>
