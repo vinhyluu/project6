@@ -36,12 +36,22 @@ class PublicPage extends React.Component{
 render(){
     return(
         <div>
-            hi
+            {this.state.publicItems.map((items) => {
+                return(
+                    <div key={items.selectionKey}>
+                        <img src={items.imageUrl} alt="" />
+                        <h3>{items.brandTitle}</h3>
+                        <p>{items.productDescription}</p>
+                        <a href={items.productUrl}>Shop</a>
+                    </div>
+                )
+            })}
         </div>
-    )
+        )
+    }
 }
 
-}
+
 
 // adminjs -- in there we're going to make a button that you can toggle onClick
 //we're going to a ternary that says for the previous button onClick if true then display in public page

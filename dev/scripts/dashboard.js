@@ -13,7 +13,6 @@ class Dashboard extends React.Component {
         this.editInfo = this.editInfo.bind(this);
     }
 
-
     componentDidMount() {
         const userId = this.props.userKey;
         

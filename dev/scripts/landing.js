@@ -58,7 +58,7 @@ class Landing extends React.Component {
                     email: `${data.user.email}`,
                 });
             });
-    }
+        }
 
     logout(e) {
         e.preventDefault();
@@ -73,8 +73,6 @@ class Landing extends React.Component {
     }
     render() {
         return (
-            // when the user signs and and if they have an existing account, direct them to the admin page
-            //if the user doesn't haev an existing account, direct them to the first time users page 
             <div>
                 {this.state.loggedIn === false
                     ? <section>
