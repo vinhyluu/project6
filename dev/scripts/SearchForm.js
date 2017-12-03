@@ -111,7 +111,7 @@ class SearchForm extends React.Component {
                 </div>
                 <div className="returnedData">
                     {this.state.results.map((brand, index) => {
-                        return <MakeUpProducts data={brand} key={index} />
+                        return <MakeUpProducts data={brand} key={index} userkey={this.props.userkey} />
                     })}
                 </div>
             </div>

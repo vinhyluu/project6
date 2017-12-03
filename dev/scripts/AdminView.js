@@ -27,7 +27,6 @@ class AdminView extends React.Component{
             }
             this.setState({
                 currentItems: userItems,
-                userkey: this.props.userkey
             })
         })
     }
