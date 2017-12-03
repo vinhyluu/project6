@@ -3,13 +3,10 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Landing from './landing';
 import SearchForm from './SearchForm';
-<<<<<<< HEAD
 import ProfileView from './ProfileView';
 import Nav from './nav';
-=======
 import AdminView from './AdminView';
 import PublicPage from './PublicPage';
->>>>>>> 6eff353f3fea5192ab873b9b6d12cd5cccd98646
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 class App extends React.Component {
@@ -20,13 +17,10 @@ class App extends React.Component {
           <Landing />
           <h1>Makeup App</h1>
           <SearchForm />
-<<<<<<< HEAD
           <ProfileView />
           <Nav />
-=======
           <AdminView />
           <PublicPage/>
->>>>>>> 6eff353f3fea5192ab873b9b6d12cd5cccd98646
         </div>
       )
     }
