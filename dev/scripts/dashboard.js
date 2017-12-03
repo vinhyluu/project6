@@ -23,17 +23,14 @@ class Dashboard extends React.Component {
             const data = res.val();
             
             const userStanding = data.existingUser;
-            console.log(userStanding);
             if(data.existingUser === true){
                 this.setState({
                     existingUser: true
                 })
-                console.log(userStanding);
             }else{
                 this.setState({
                     existingUser: false
                 })
-                console.log(userStanding);
             }   
         })
     }

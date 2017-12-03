@@ -8,7 +8,7 @@ const provider = new firebase.auth.GoogleAuthProvider();
 export default class EditingBox extends React.Component{
     constructor(){
         super();
-        this.state ={
+        this.state = {
             editing: false,
             note: "",
         };
@@ -33,11 +33,7 @@ export default class EditingBox extends React.Component{
             note: "",
         })
     }
-    render(){
-<<<<<<< HEAD
-        // console.log(this.props.note)
-=======
->>>>>>> 6eff353f3fea5192ab873b9b6d12cd5cccd98646
+    render() {
         let editingTemp = (
         
             <div>

@@ -12,14 +12,16 @@ class AdminView extends React.Component{
             active: false
         }
         this.removeItem = this.removeItem.bind(this);
-        this.toggleClass = this.toggleClass.bind(this)
+        this.toggleClass = this.toggleClass.bind(this);
+        this.addPublic = this.addPublic.bind(this);
+        this.removePublic = this.removePublic.bind(this);
     }
 
     componentDidMount(){
         const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
 
         const userItems = [];
-        dbRef.on("value", (res) => {
+        dbRef.once("value", (res) => {
             const data = res.val();
 
             for (let key in data) {
@@ -34,25 +36,40 @@ class AdminView extends React.Component{
     
     removeItem(e, key) {
         e.preventDefault();
-        const selectionRef = key;
         const toRemove = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
-        
         toRemove.remove();
 
         const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
-
-        const userItems = [];
+        const newUserItems = [];
         dbRef.on("value", (res) => {
             const data = res.val();
 
             for (let key in data) {
                 const value = data[key];
-                userItems.push(value);
+                newUserItems.push(value);
             }
             this.setState({
-                currentItems: userItems
+                currentItems: newUserItems
             })
         })
+    }
+
+    addPublic(e, key) {
+        e.preventDefault();
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
+
+        dbRef.update({
+            active: true,
+        });
+    }
+
+    removePublic(e, key) {
+        e.preventDefault();
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
+
+        dbRef.update({
+            active: false,
+        });
     }
 
     toggleClass(){
@@ -88,7 +105,9 @@ class AdminView extends React.Component{
                             <img src={item.imageUrl} alt=""/> 
                             <h1>{item.brandTitle}</h1>
                              <p>{item.productDescription}</p>
-                            <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
+                            <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>Remove Item</a>
+                            <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}>Add Public</a>
+                            <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}>Remove Public</a>
                         </div>
                     </div>
                     )

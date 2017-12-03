@@ -3,6 +3,36 @@ import ReactDOM from 'react-dom';
 import firebase from './firebase';
 
 class PublicPage extends React.Component{
+    constructor() {
+        super();
+        this.state = {
+            publicItems: [],
+        }
+    }
+
+    componentDidMount(){
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+
+        const deactiveItem = [];
+        dbRef.once("value", (res) => {
+            const data = res.val();
+            for (let key in data) {
+                const value = data[key];
+                deactiveItem.push(value);
+            }
+
+            const activeItems = [];
+            for (var i = 0; i < deactiveItem.length; i++) {
+                if (deactiveItem[i].active === true) {
+                    activeItems.push(deactiveItem[i]);
+                } 
+            }
+
+            this.setState({
+                publicItems: activeItems,
+            })
+        })
+    }
 render(){
     return(
         <div>

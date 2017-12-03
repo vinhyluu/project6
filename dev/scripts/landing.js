@@ -14,7 +14,7 @@ class Landing extends React.Component {
         super();
         this.state = {
             loggedIn: false,
-            uid: "",
+            userKey: "",
             userName: "",
         }
         this.login = this.login.bind(this);
@@ -22,24 +22,21 @@ class Landing extends React.Component {
     }
 
     componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
+        firebase.auth().onAuthStateChanged((data) => {
+            if (data) {
                 this.setState({
                     loggedIn: true,
-                    uid: user.uid,
-                    userName: user.displayName,
+                    userKey: data.uid,
+                    userName: data.displayName,
                 });
             } else {
                 this.setState({
                     loggedIn: false,
-                    uid: "",
+                    userKey: "",
                     userName: "",
                 });
             }
         });
-    }
-
-    componentDidMount() {
     }
 
     login(e) {
@@ -70,7 +67,7 @@ class Landing extends React.Component {
             });
         this.setState({
             loggedIn: false,
-            uid: "",
+            userKey: "",
             userName: "",
         })
     }
@@ -89,7 +86,7 @@ class Landing extends React.Component {
                         </div>
                     </section>
                     : <Dashboard
-                        uid={this.state.uid}
+                        userKey={this.state.userKey}
                         userName={this.state.userName} />}
                 <a href="" onClick={this.logout}>Logout</a>
                 <Form/>
