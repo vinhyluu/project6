@@ -13,12 +13,12 @@ class App extends React.Component {
     render() {
       return (
         <div>
-          <Nav/>
+          {/* <Nav/> */}
           <Landing />
-          <h1>Makeup App</h1>
-          <SearchForm />
-          <AdminView />
-          <PublicPage/>
+          {/* <h1>Makeup App</h1> */}
+          {/* <SearchForm /> */}
+          {/* <AdminView /> */}
+          {/* <PublicPage/> */}
         </div>
       )
     }

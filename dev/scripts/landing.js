@@ -74,19 +74,17 @@ class Landing extends React.Component {
         return (
             <div className="landingPage">
                 {this.state.loggedIn === false
-                    ? <section>
+                    ? <section className="landingContainer">
                         <div>
 
                         </div>
-                        <div className="wrapper">
+                        <div className="landingControls">
                             <a href="" onClick={this.login}>Sign in with Google</a>
                         </div>
                     </section>
                     : <Dashboard
                         userKey={this.state.userKey}
                         userName={this.state.userName} />}
-                <a href="" onClick={this.logout}>Logout</a>
-                <Form/>
             </div>
         )
     }

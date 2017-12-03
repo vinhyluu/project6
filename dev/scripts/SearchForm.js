@@ -136,7 +136,7 @@ class MakeUpProducts extends React.Component {
 
     addItem(e) {
         e.preventDefault();
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections")
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections")
         
         const newSelection = {}
         const newRef = dbRef.push(newSelection)
@@ -145,6 +145,7 @@ class MakeUpProducts extends React.Component {
                 brandTitle: this.props.data.brand,
                 productDescription: this.props.data.name,
                 productUrl: this.props.data.product_link,
+                productId: this.props.data.id,
                 selectionKey: newRef.key,
                 active: false,
             });
@@ -158,7 +159,7 @@ class MakeUpProducts extends React.Component {
                 <h3>{this.props.data.brand}</h3>
                 <p>{this.props.data.name}</p>
                 <a href={`${this.props.data.product_link}`} target="_blank">Buy Me</a>
-                <p>{this.props.data.id}</p>
+                <p className="visuallyHidden">{this.props.data.id}</p>
             </div>
         )
     }
