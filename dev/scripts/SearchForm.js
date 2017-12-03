@@ -91,6 +91,7 @@ class SearchForm extends React.Component {
     render() {
         return (
             <div>
+                <Nav />
                 <div>
                     <form action="" onSubmit={this.handleSubmit}>
                         <div className="searchContainer">

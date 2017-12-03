@@ -73,7 +73,7 @@ class Landing extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="landingPage">
                 {this.state.loggedIn === false
                     ? <section>
                         <div>

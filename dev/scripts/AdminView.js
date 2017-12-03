@@ -101,7 +101,6 @@ class AdminView extends React.Component{
             height: "50px",
         }
 
-
         return(
             <div>
                 <div>

@@ -37,6 +37,7 @@ class PublicPage extends React.Component{
 render(){
     return(
         <div>
+            <Nav />
             {this.state.publicItems.map((items) => {
                 return(
                     <div key={items.selectionKey}>
