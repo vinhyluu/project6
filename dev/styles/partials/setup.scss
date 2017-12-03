@@ -4,4 +4,9 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 .clearfix:after {visibility: hidden; display: block; font-size: 0; content: ''; clear: both; height: 0; }
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
-/* UNIVERSAL */ 
+/* UNIVERSAL */
+
+.wrapper {
+    width: 80%;
+    margin: 0 auto;
+}

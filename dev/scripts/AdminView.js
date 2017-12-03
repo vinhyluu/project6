@@ -4,10 +4,10 @@ import firebase from './firebase';
 import EditingBox from './EditingBox';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
-class AdminView extends React.Component{
-    constructor(){
+class AdminView extends React.Component {
+    constructor() {
         super();
-        this.state={
+        this.state = {
             currentItems: [],
             active: false,
             testColor: "",
@@ -18,7 +18,7 @@ class AdminView extends React.Component{
         this.removePublic = this.removePublic.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
 
         const userItems = [];
@@ -34,7 +34,7 @@ class AdminView extends React.Component{
             })
         })
     }
-    
+
     removeItem(e, key) {
         e.preventDefault();
         const toRemove = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
@@ -73,12 +73,12 @@ class AdminView extends React.Component{
         });
     }
 
-    toggleClass(){
+    toggleClass() {
         const currentState = this.state.active;
-        this.setState({ active: !currentState})
+        this.setState({ active: !currentState })
     }
 
-    toggleColor(e, colorValue){
+    toggleColor(e, colorValue) {
         e.preventDefault();
         this.setState({
             testColor: colorValue
@@ -88,9 +88,9 @@ class AdminView extends React.Component{
             backgroundColor: colorValue
         })
     }
-    
-    
-    render(){
+
+
+    render() {
         const divStyle = {
             background: "black",
             width: "50px",
@@ -102,11 +102,6 @@ class AdminView extends React.Component{
             <div>
                 <div>
                     <div>
-                        <div>
-                            <img src={`${this.state.imageUrl}`} alt="" />
-                            <button className={this.state.active ? 'your_className' : null} onClick={this.toggleClass}><i className="fa fa-plus" aria-hidden="true"></i></button>
-                        </div>
-
                         <EditingBox />
 
                         <p>{this.state.note}</p>

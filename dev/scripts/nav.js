@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+<<<<<<< HEAD
 import AdminView from './AdminView'; 
 import SearchForm from './SearchForm'; 
 import PublicPage from './PublicPage'; 
@@ -30,6 +31,21 @@ class Nav extends React.Component {
                     </Switch>
                 </div>
             </Router>
+=======
+
+class Nav extends React.Component {
+    render(){
+        return(
+            <div>
+                <header>
+                    <nav>
+                        <a href=""><i className="fa fa-user-o" aria-hidden="true"></i></a>
+                        <a href=""><i className="fa fa-search" aria-hidden="true"></i></a>
+                        <a href=""><i className="fa fa-share-alt" aria-hidden="true"></i></a>
+                    </nav>
+                </header>
+            </div>            
+>>>>>>> 125f7583f90cca5a403f7e46c403565cc5683ba7
         )
     }
 }
