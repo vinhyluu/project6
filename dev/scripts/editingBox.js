@@ -26,7 +26,7 @@ export default class EditingBox extends React.Component{
         const dbRef= firebase.database().ref(this.props.note);
 
         dbRef.update({
-          note: this.note.value
+        note: this.note.value
         })
         this.setState({
             editing: false,
@@ -35,7 +35,6 @@ export default class EditingBox extends React.Component{
     }
     render(){
         let editingTemp = (
-        
             <div>
                 <p>{this.props.note}</p>  
             </div>
@@ -54,10 +53,10 @@ export default class EditingBox extends React.Component{
             <div className="editingBox">
                 <i className="fa fa-edit" onClick={()=>this.setState({editing:true})}></i>
                 {editingTemp}
-    
             </div>
         )
     }
 
 }
 
+export default EditingBox;

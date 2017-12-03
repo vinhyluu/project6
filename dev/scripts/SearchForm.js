@@ -166,5 +166,5 @@ class MakeUpProducts extends React.Component {
 
 
    
-export default SearchForm
+export default SearchForm;
 
