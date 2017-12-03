@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from './firebase';
-import EditingBox from './EditingBox';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
-class Profile extends React.Component {
+class Form extends React.Component {
 
     constructor() {
         super();
@@ -105,6 +104,7 @@ class Profile extends React.Component {
                     </div>
                     <input className="submit" type="submit" value="Add" />
                 </form>
+<<<<<<< HEAD:dev/scripts/profile.js
                 <div>
                     <img src={`${this.state.imageUrl}`} alt=""/>
                     <p>{this.state.blurb}</p>
@@ -115,11 +115,13 @@ class Profile extends React.Component {
                     <a href={`https://www.instagram.com/${this.state.instagram}`}>
                         <i className="fa fa-instagram" aria-hidden="true"></i>
                     </a>
+=======
+               
+>>>>>>> 6eff353f3fea5192ab873b9b6d12cd5cccd98646:dev/scripts/form.js
                 
-                </div>
             </div>
         )
     }
 }
 
-export default Profile;
+export default Form;
