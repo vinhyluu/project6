@@ -49,37 +49,22 @@ class Form extends React.Component {
         const newNote = this.note.value
         const dbRef = firebase.database().ref(`${this.props.userkey}`);
 
-        this.setState({
-            twitter: newTwitter,
-            instagram: newInstagram,
-            note: newNote
+        const file = document.getElementById("userImage").files[0];
+
+        const storageRef = firebase.storage().ref(file.name);
+
+        storageRef.put(file).then(function (result) {
+            storageRef.getDownloadURL()
+                .then(function (result) {
+                    dbRef.update({
+                        imageUrl: result,
+                        twitter: newTwitter,
+                        instagram: newInstagram,
+                        note: newNote,
+                        existingUser: true,
+                    })
+                });
         });
-
-        if (document.getElementById("userImage").value != "") {
-            const file = document.getElementById("userImage").files[0];
-
-            const storageRef = firebase.storage().ref(file.name);
-
-            storageRef.put(file).then(function (result) {
-
-                storageRef.getDownloadURL()
-                    .then(function (result) {
-                        this.setState({
-                            imageUrl: result,
-                        });
-                        dbRef.update({
-                            imageUrl: this.state.imageUrl,
-                        })
-                    }.bind(this));
-            }.bind(this));
-        } 
-        else {
-            dbRef.update({
-                twitter: newTwitter,
-                instagram: newInstagram,
-                note: newNote
-            })
-        }
     }
     render(){
         
@@ -88,32 +73,21 @@ class Form extends React.Component {
                 <form onSubmit={this.handleClick}>
                     <div className="twitterLink">
                         <label htmlFor="twitter">Twitter Link</label>
-                        <input type="text" name="twitter" ref={ref => this.twitter = ref} />
+                        <input type="text" name="twitter" id="twitter" ref={ref => this.twitter = ref} />
                     </div>
                     <div className="instagramLink">
                         <label htmlFor="instagram">Instagram Link</label>
-                        <input type="text" name="instagram" ref={ref => this.instagram = ref} />
+                        <input type="text" name="instagram" id="instagram" ref={ref => this.instagram = ref} />
                     </div>
                     <div className="note">
-                    
-                        <label htmlFor="profileNote"></label>
-                        <textarea name="profileNote" id="" maxLength="280" ref={ref => this.note = ref}></textarea>
+                        <label htmlFor="note"></label>
+                        <textarea name="note" id="note" maxLength="280" ref={ref => this.note = ref}></textarea>
                     </div>
-                    <div className="image">
+                    <div className="userImage">
                         <input type="file" name="userImage[]" id="userImage" ref={ref => this.imageUrl = ref}/>
                     </div>
                     <input className="submit" type="submit" value="Add" />
                 </form>  
-                {/* <div>
-                    <img src={`${this.state.imageUrl}`} alt=""/>
-                    <p>{this.state.note}</p>
-                    <a href={`https://twitter.com/${this.state.twitter}`}>
-                        <i className="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href={`https://www.instagram.com/${this.state.instagram}`}>
-                        <i className="fa fa-instagram" aria-hidden="true"></i>
-                    </a>                
-                </div> */}
             </div>
         )
     }
