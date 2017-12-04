@@ -5,27 +5,58 @@
     height: 96vh;
     margin-top: 2vh;
     margin-left: 1.75vw;
-    background: #EFEFEF;
+    background: #efefef;
+}
+
+.unitSignIn{
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    height:315px;
+    width: 315px;
+    background: rgba(255, 255, 255, 0.541);
+    margin: 20% 23%;
 }
 
 .landingControls {
-    border: 1px solid red;
-    border-radius: 10px;
+    border: 1px solid darkgrey;
     width: 66.66%;
     height: 100%;
     text-align: center;
     float: right;
-    position: relative;
     a {
         display: block;
-        border: 1px solid black;
-        border-radius: 10px;
-        width: 32%;
-        // margin: 30% auto 0 auto;
-        padding: 2% 0%;
-        color: #333;
-        position: absolute;
-        top: 45%;
-        left: 40%;
+        // border: 1px solid #333;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+        width: 80%;
+        padding: 2.5% 0;
+        color: $nude-color;
+        margin-left: 11%;
+        font-weight: bolder;
+        
+    }
+    a:hover {
+        box-shadow: 0 4px 10px $nude-color;
+    }
+}
+
+.signInLogo{
+    // position: absolute;
+    border-radius: 60%;
+    padding-top: 5%;
+    // top: 20%;
+    // left: 43%;
+    height: 200px;
+    width: 200px;
+    
+
+}
+
+.landingPageSideImage{
+    img{
+        width: 31%;
+        height: 96vh;
+        float: left;
+        margin-left: 3%;
+        object-fit: cover;
     }
 }
