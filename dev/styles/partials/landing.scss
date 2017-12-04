@@ -9,8 +9,7 @@
 }
 
 .landingControls {
-    border: 1px solid red;
-    border-radius: 10px;
+    border: 1px solid darkgrey;
     width: 66.66%;
     height: 100%;
     text-align: center;
@@ -25,7 +24,33 @@
         padding: 2% 0%;
         color: #333;
         position: absolute;
-        top: 45%;
-        left: 40%;
+        top: 50%;
+        // left: 40%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.signInLogo{
+    position: absolute;
+    border-radius: 60%;
+    padding-top: 5%;
+    top: 50%;
+    // left: 43%;
+    height: 200px;
+    width: 200px;
+    // background-image: radial-gradient( transparent 30%, #{$primary-color} 20%);
+    
+
+}
+
+.landingPageSideImage{
+    img{
+        width: 31%;
+        height: 96vh;
+        float: left;
+        margin-left: 3%;
+        object-fit: cover;
     }
 }
