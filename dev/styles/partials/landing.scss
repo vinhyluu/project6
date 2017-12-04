@@ -9,33 +9,36 @@
 }
 
 .unitSignIn{
-    position: relative;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     height:315px;
     width: 315px;
     background: rgba(255, 255, 255, 0.541);
-    margin: 20% 23%;
+    position: absolute;
+    top: 50%;
+    left: 31%;
+    transform: translate(0, -50%);
 }
 
 .landingControls {
     border: 1px solid darkgrey;
-    width: 66.66%;
+    width: 65%;
     height: 100%;
     text-align: center;
     float: right;
+    position: relative;
     a {
         display: block;
         // border: 1px solid #333;
         box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
         width: 80%;
         padding: 2.5% 0;
-        color: $nude-color;
+        color: #eba78d;
         margin-left: 11%;
         font-weight: bolder;
         
     }
     a:hover {
-        box-shadow: 0 4px 10px $nude-color;
+        box-shadow: 0 4px 10px #eba78d;
     }
 }
 
@@ -60,3 +63,7 @@
         object-fit: cover;
     }
 }
+
+// .wrappingWrapper{
+//     width: 80%;
+// }
