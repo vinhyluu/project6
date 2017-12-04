@@ -119,7 +119,7 @@ class SearchForm extends React.Component {
     render() {
         return (
             <div>
-                <div className="searchPage">
+                <div className="searchPage clearfix">
                     <div className="inputWrapper">
                         <form action="" onSubmit={this.handleSubmit} className="searchContainer clearfix">
                                 <div className="brandContainer selectedContainer">
@@ -134,10 +134,10 @@ class SearchForm extends React.Component {
                                         <input className="searchInput" type="text" name="type" value={this.state.searchByType} onChange={this.handleType} autoFocus/>
                                     </div>
                                 </div>
+                                <div className="submitContainer">
+                                    <input type="submit" name="submit" />
+                                 </div>
                         </form>
-                        <div className="submitContainer">
-                            <input type="submit" name="submit" />
-                        </div>
                     </div>
                 </div>
                 <div className="returnedData">
