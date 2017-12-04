@@ -74,18 +74,15 @@ class Landing extends React.Component {
     render() {
         return (
             <div>
-                <div className="landingPageSideImage">
-                    <img src="./public/images/sideImage.jpg" alt=""/>
-                </div>
                 <div>
                     {this.state.loggedIn === false
                         ? <section className="landingContainer">
-                            <div>
-
+                            <div className="landingPageSideImage">
+                                <img src="./dev/images/sideImage.jpg" alt=""/>
                             </div>
                             <div className="landingControls">
                                 <div className="unitSignIn">
-                                    <img className="signInLogo" src="./public/images/logo.png" alt=""/>
+                                    <img className="signInLogo" src="./dev/images/logo.png" alt=""/>
                                     <a href="" onClick={this.login}>Sign in with Google</a>
                                 </div>
                             </div>
