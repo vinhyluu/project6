@@ -76,30 +76,34 @@ class SearchForm extends React.Component {
                 console.log(err)
             })
         }
-        componentDidMount() {
-            const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
-            const deactiveItem = [];
-            dbRef.once("value", (res) => {
-                const data = res.val();
-                for (let key in data) {
-                    console.log(data)
-                    console.log(key)
-                    const value = data[key];
-                    deactiveItem.push(value);
-                    console.log(deactiveItem)
-                    console.log(value)
-                }
-                const activeItems = [];
-                console.log(activeItems)
-                for (var i = 0; i < deactiveItem.length; i++) {
-                    activeItems.push(deactiveItem[i].productId);
-                }
-                console.log(activeItems)
-                this.setState({
-                    ids: activeItems
-                })
+
+
+    componentDidMount() {
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+        const deactiveItem = [];
+        dbRef.once("value", (res) => {
+            const data = res.val();
+            for (let key in data) {
+                console.log(data)
+                console.log(key)
+                const value = data[key];
+                deactiveItem.push(value);
+                console.log(deactiveItem)
+                console.log(value)
+            }
+            const activeItems = [];
+            console.log(activeItems)
+            for (var i = 0; i < deactiveItem.length; i++) {
+                activeItems.push(deactiveItem[i].productId);
+            }
+            console.log(activeItems)
+            this.setState({
+                ids: activeItems
             })
-        }
+        })
+    }
+        
+
         pageResults(results) {
             let existingIds = this.state.ids
 
@@ -188,5 +192,5 @@ class MakeUpProducts extends React.Component {
 
 
    
-export default SearchForm
+export default SearchForm;
 
