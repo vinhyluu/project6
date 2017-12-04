@@ -72,19 +72,24 @@ class Landing extends React.Component {
     }
     render() {
         return (
-            <div className="landingPage">
-                {this.state.loggedIn === false
-                    ? <section className="landingContainer">
-                        <div>
-
-                        </div>
-                        <div className="landingControls">
-                            <a href="" onClick={this.login}>Sign in with Google</a>
-                        </div>
-                    </section>
-                    : <Dashboard
-                        userKey={this.state.userKey}
-                        userName={this.state.userName} />}
+            <div>
+                <div>
+                    {this.state.loggedIn === false
+                        ? <section className="landingContainer">
+                            <div className="landingPageSideImage">
+                                <img src="./dev/images/sideImage.jpg" alt=""/>
+                            </div>
+                            <div className="landingControls">
+                                <div className="unitSignIn">
+                                    <img className="signInLogo" src="./dev/images/logo.png" alt=""/>
+                                    <a href="" onClick={this.login}>Sign in with Google</a>
+                                </div>
+                            </div>
+                        </section>
+                        : <Dashboard
+                            userKey={this.state.userKey}
+                            userName={this.state.userName} />}
+                </div>
             </div>
         )
     }
