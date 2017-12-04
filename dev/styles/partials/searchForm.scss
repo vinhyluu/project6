@@ -1,7 +1,6 @@
 .searchPage{
         margin-top: 2vh;
         margin-left: 1.75vw;
-        background: linear-gradient(45deg, rgba(236, 233, 230, .25), #000);
        
 }
 
@@ -54,4 +53,22 @@
 
 .searchInput:focus{
     outline: 2px solid hsla(328, 83%, 88%, 0.486);
+}
+
+.searchSubmitButton{
+    position: absolute;
+    bottom: -8.5%;
+    right: 5%;
+    transform: translate(-5%, 8.5%);
+    outline: none;
+    border: none;
+    background: #f7f7f7;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    padding: 20px 55px;
+    transition: .35s;
 }

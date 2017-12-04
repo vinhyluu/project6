@@ -135,7 +135,7 @@ class SearchForm extends React.Component {
                                     </div>
                                 </div>
                                 <div className="submitContainer">
-                                    <input type="submit" name="submit" />
+                                    <input className="searchSubmitButton"type="submit" name="submit" />
                                  </div>
                         </form>
                     </div>
