@@ -69,6 +69,7 @@ class AdminView extends React.Component{
             })
         })
     }
+
     addPublic(e, key) {
         e.preventDefault();
         const dbRef = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
@@ -76,6 +77,7 @@ class AdminView extends React.Component{
             active: true,
         });
     }
+
     removePublic(e, key) {
         e.preventDefault();
         const dbRef = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
@@ -83,10 +85,12 @@ class AdminView extends React.Component{
             active: false,
         });
     }
+
     toggleClass(){
         const currentState = this.state.active;
         this.setState({ active: !currentState})
     }
+
     toggleColor(e, colorValue){
         e.preventDefault();
         this.setState({
@@ -129,10 +133,10 @@ class AdminView extends React.Component{
                             </div>
                         </div>
                         <p>{this.state.note}</p>
-                        <a href={`${this.state.twitter}`}>
+                        <a href={`http://twitter.com/${this.state.twitter}`}>
                             <i className="fa fa-twitter" aria-hidden="true"></i>
                         </a>
-                        <a href={`${this.state.instagram}`}>
+                        <a href={`http://instagram.com/${this.state.instagram}`}>
                             <i className="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                     </div>
