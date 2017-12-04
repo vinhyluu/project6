@@ -62,4 +62,4 @@ render(){
 
 
 
-export default PublicPage
+export default PublicPage;

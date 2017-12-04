@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Landing from './landing';
 import SearchForm from './SearchForm';
+// import ProfileView from './ProfileView';
+import Nav from './nav';
 import AdminView from './AdminView';
 import PublicPage from './PublicPage';
 import Nav from './nav';
