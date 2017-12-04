@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
-export default class EditingBox extends React.Component{
-    constructor(){
+export default class EditingBox extends React.Component {
+    constructor() {
         super();
         this.state = {
             editing: false,
@@ -58,26 +58,24 @@ export default class EditingBox extends React.Component{
 
     render() {
         let editingTemp = (
-        
             <div>
-               <p>{this.props.note}</p>  
+                <p>{this.props.note}</p>
             </div>
-           
         )
-        if (this.state.editing){
+        if (this.state.editing) {
             editingTemp = (
                 <form onSubmit={this.save}>
                     <div>
-                        <input type="text" defaultValue={this.state.note} onChange={this.handleChange} name="note" ref={ref => this.note = ref}/>
-                        <input type="text" defaultValue={this.state.instagram} onChange={this.handleChange} name="instagram" ref={ref => this.instagram = ref}/>
+                        <input type="text" defaultValue={this.state.note} onChange={this.handleChange} name="note" ref={ref => this.note = ref} />
+                        <input type="text" defaultValue={this.state.instagram} onChange={this.handleChange} name="instagram" ref={ref => this.instagram = ref} />
                         <input type="text" defaultValue={this.state.twitter} onChange={this.handleChange} name="twitter" ref={ref => this.twitter = ref} />
                         <input type="file" id="userImage" name="userImage[]" defaultValue={this.state.imageUrl}  onChange={this.onChange} ref={ref => this.imageUrl = ref}/>
                     </div>
-                    <input type="submit" value="Done editing"/>
+                    <input type="submit" value="Done editing" />
                 </form>
             )
         }
-        return(
+        return (
             <div className="editingBox">
                  <i className="fa fa-edit" onClick={()=>this.setState({editing:true})}></i>
                  {editingTemp}
@@ -86,4 +84,3 @@ export default class EditingBox extends React.Component{
     }
 
 }
-

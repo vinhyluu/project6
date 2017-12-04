@@ -12,6 +12,7 @@ class SearchForm extends React.Component {
             searchByBrand: "",
             searchByType: "",
             results: [],
+            ids: []
         }
         this.handleBrand = this.handleBrand.bind(this);
         this.handleType = this.handleType.bind(this);
@@ -75,9 +76,36 @@ class SearchForm extends React.Component {
                 console.log(err)
             })
         }
+
+
+    componentDidMount() {
+        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+        const deactiveItem = [];
+        dbRef.once("value", (res) => {
+            const data = res.val();
+            for (let key in data) {
+                console.log(data)
+                console.log(key)
+                const value = data[key];
+                deactiveItem.push(value);
+                console.log(deactiveItem)
+                console.log(value)
+            }
+            const activeItems = [];
+            console.log(activeItems)
+            for (var i = 0; i < deactiveItem.length; i++) {
+                activeItems.push(deactiveItem[i].productId);
+            }
+            console.log(activeItems)
+            this.setState({
+                ids: activeItems
+            })
+        })
+    }
         
+
         pageResults(results) {
-            let existingIds = [8, 9, 11, 12]
+            let existingIds = this.state.ids
 
             let filteredArray = results.filter(function (item) {
                 return existingIds.indexOf(item["id"]) == -1;
@@ -94,15 +122,12 @@ class SearchForm extends React.Component {
                 <div>
                     <form action="" onSubmit={this.handleSubmit}>
                         <div className="searchContainer">
-
                             <div className="brandContainer">
                                 <input type="text" name="brand" value={this.state.searchByBrand} onChange={this.handleBrand} />
                             </div>
-
                             <div className="typeContainer">
                                 <input type="text" name="type" value={this.state.searchByType} onChange={this.handleType} />
                             </div>
-
                             <div className="submitContainer">
                                 <input type="submit" name="submit" />
                             </div>
@@ -167,5 +192,5 @@ class MakeUpProducts extends React.Component {
 
 
    
-export default SearchForm
+export default SearchForm;
 

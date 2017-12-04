@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Nav from './nav.js';
 import Landing from './landing';
 import SearchForm from './SearchForm';
+// import ProfileView from './ProfileView';
+import Nav from './nav';
 import AdminView from './AdminView';
 import PublicPage from './PublicPage';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
