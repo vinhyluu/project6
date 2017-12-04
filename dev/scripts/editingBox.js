@@ -76,7 +76,7 @@ export default class EditingBox extends React.Component {
                         </div>
                         <div>
                             <label htmlFor="twitter" className="visuallyhidden">Twitter</label>
-                            <input className="editInfoInputs" type="text" placeholder="Twitter"  defaultValue={this.state.twitter} onChange={this.handleChange} name="twitter" ref={ref => this.twitter = ref} />
+                            <input className="editInfoInputs" type="text" placeholder="Twitter" defaultValue={this.state.twitter} onChange={this.handleChange} name="twitter" ref={ref => this.twitter = ref} />
                         </div>
                         <div>
                             <label htmlFor="userImage" className="visuallyhidden">Image Upload</label>

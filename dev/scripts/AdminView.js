@@ -133,14 +133,14 @@ class AdminView extends React.Component {
                                 </div>
                                 <div className="contentEdit">
                                     <p className="bodyContent"></p>
-                                    
+
                                     <EditingBox
                                         userkey={this.props.userkey} />
                                     <p className="editColorTitle" onClick={this.showColors}>Edit Colors</p>
-                                    
+
                                     {this.state.showColors ?
                                         <div className="colorBoxes">
-                                            <div className="colors color1"onClick={(e) => this.toggleColor(e, "userOption1")}></div>
+                                            <div className="colors color1" onClick={(e) => this.toggleColor(e, "userOption1")}></div>
                                             <div className="colors color2" onClick={(e) => this.toggleColor(e, "userOption2")}></div>
                                             <div className="colors color3" onClick={(e) => this.toggleColor(e, "userOption3")}></div>
                                             <div className="colors color4" onClick={(e) => this.toggleColor(e, "userOption4")}></div>
@@ -154,21 +154,23 @@ class AdminView extends React.Component {
                     <div>
                         <h2 className="bagTitle">My Bag</h2>
                     </div>
-                    
+
                     {this.state.currentItems.map((item) => {
                         return (
                             <div key={item.selectionKey}>
                                 {/* <div className="wrapper"> */}
-                                    <div className="bagContainer">
-                                        <div className="bagItems">
+                                <div className="bagContainer">
+                                    <div className="bagItems">
+                                        <div className="bagImage">
                                             <img src={item.imageUrl} alt="" />
-                                            <h1>{item.brandTitle}</h1>
-                                            <p>{item.productDescription}</p>
-                                            <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}><i className="fa fa-minus-square-o" aria-hidden="true"></i>Remove From List</a>
-                                            <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}><i className="fa fa-plus-square-o" aria-hidden="true"></i>Add Public</a>
-                                            <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i>Remove Public</a>
                                         </div>
+                                        <h1>{item.brandTitle}</h1>
+                                        <p>{item.productDescription}</p>
+                                        <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}><i className="fa fa-minus-square-o" aria-hidden="true"></i>Remove From List</a>
+                                        <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}><i className="fa fa-plus-square-o" aria-hidden="true"></i>Add Public</a>
+                                        <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i>Remove Public</a>
                                     </div>
+                                </div>
                                 {/* </div> */}
                             </div>
                         )

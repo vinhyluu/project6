@@ -5,10 +5,9 @@
 
 .bagItems{
     float: left;  
-    width: 25%;
-    text-align: left; 
+    width: calc(25% - 20px);
     margin-bottom: 50px;
-    height: 300px;
+    margin-right: 20px;
 }
 
 .bagItems p{
@@ -35,9 +34,12 @@
     margin-right: 3px;
 }
 
+.bagImage{
+    width: 250px;
+}
 
-.imgContainer img{
-    max-width: 100%;
+.bagImage img{
+    object-fit: cover;
 }
 
 .sectionHeading{
@@ -154,6 +156,7 @@
     margin-top: 20px;
     margin-right: 15px;
 }
+
 
 
 // const divStyle = {
