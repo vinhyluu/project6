@@ -155,7 +155,6 @@ class AdminView extends React.Component{
                         )
                     })}
                 </div>
-
                 <p onClick={this.showColors}>Show Colors</p>
                 {this.state.showColors ?
                 <div>
