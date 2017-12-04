@@ -134,9 +134,9 @@ class SearchForm extends React.Component {
                                         <input className="searchInput" type="text" name="type" value={this.state.searchByType} onChange={this.handleType} autoFocus/>
                                     </div>
                                 </div>
-                            <div className="submitContainer">
-                                <input type="submit" name="submit" />
-                            </div>
+                        <div className="submitContainer">
+                            <input type="submit" name="submit" />
+                        </div>
                         </form>
                     </div>
                 </div>
