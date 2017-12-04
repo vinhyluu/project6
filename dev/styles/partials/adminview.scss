@@ -6,13 +6,20 @@
 .bagItems{
     float: left;  
     width: 25%;
-    text-align: center; 
+    text-align: left; 
     margin-bottom: 50px;
     height: 300px;
 }
 
+.bagItems p{
+    font-size: 1.4rem;
+}
+
 .bagContainer h1{
     margin-bottom: 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
 }
 
 .bagContainer p{
@@ -34,14 +41,123 @@
 }
 
 .sectionHeading{
-    font-size: 10rem;
+    font-size: 8rem;
+    margin: 50px 0 50px 0;
 }
 
 .userDetails{
     width: 100%;
 }
 
-.imgContainer, .userContentContainer{
+.imgContainer{
+    width: 50%;
+    margin-right: 40px;
     float: left;
-    width: 25%;
 }
+
+.imgContainer img{
+    max-width: 100%;
+    height: 500px;
+}
+
+.userContentContainer{
+    width: calc(50% - 40px);
+    float: left;
+}
+
+.bodyContent{
+    font-size: 2rem;
+    line-height: 2.6rem;
+    letter-spacing: 0.05rem;
+}
+
+.contentEdit{
+    width: 100%;
+}
+
+.editingBox{
+    float: left;
+    width: 50%;
+    height: 60px;
+}
+
+.editingBox a, .editColorTitle{
+    font-size: 2rem;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.color1{
+    background: #e5bb9e;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.color2{
+    background: #fac8e2;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.color3{
+    background: #eba78d;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.color4{
+    background: #dca852;
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+}
+
+.colors{
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.colorBoxes{
+    right: 0;
+}
+
+.bagTitle{
+    font-size: 3rem;
+    margin: 30px 0 30px 0;
+}
+
+.editInfoContainer{
+    margin-top: 10px;
+}
+
+.editInfoInputs{
+    width: 75%;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 1px solid black;
+    height: 30px;
+    font-size: 1.5rem;
+}
+
+.editInfoInputs::placeholder{
+    font-size: 1.5rem;
+}
+
+.fa-twitter, .fa-instagram{
+    font-size: 3rem;
+    color: black;
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+
+// const divStyle = {
+//             background: "black",
+//             width: "50px",
+//             height: "50px",
+//         }

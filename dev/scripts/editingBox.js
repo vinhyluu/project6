@@ -65,11 +65,23 @@ export default class EditingBox extends React.Component {
         if (this.state.editing) {
             editingTemp = (
                 <form onSubmit={this.save}>
-                    <div>
-                        <input type="text" defaultValue={this.state.note} onChange={this.handleChange} name="note" ref={ref => this.note = ref} />
-                        <input type="text" defaultValue={this.state.instagram} onChange={this.handleChange} name="instagram" ref={ref => this.instagram = ref} />
-                        <input type="text" defaultValue={this.state.twitter} onChange={this.handleChange} name="twitter" ref={ref => this.twitter = ref} />
-                        <input type="file" id="userImage" name="userImage[]" defaultValue={this.state.imageUrl} onChange={this.onChange} ref={ref => this.imageUrl = ref} />
+                    <div className="editInfoContainer">
+                        <div>
+                            <label htmlFor="note" className="visuallyhidden">Note</label>
+                            <input className="editInfoInputs" type="text" placeholder="Bio" defaultValue={this.state.note} onChange={this.handleChange} name="note" ref={ref => this.note = ref} />
+                        </div>
+                        <div>
+                            <label htmlFor="instagram" className="visuallyhidden">Instagram</label>
+                            <input className="editInfoInputs" type="text" placeholder="Instagram" defaultValue={this.state.instagram} onChange={this.handleChange} name="instagram" ref={ref => this.instagram = ref} />
+                        </div>
+                        <div>
+                            <label htmlFor="twitter" className="visuallyhidden">Twitter</label>
+                            <input className="editInfoInputs" type="text" placeholder="Twitter"  defaultValue={this.state.twitter} onChange={this.handleChange} name="twitter" ref={ref => this.twitter = ref} />
+                        </div>
+                        <div>
+                            <label htmlFor="userImage" className="visuallyhidden">Image Upload</label>
+                            <input type="file" id="userImage" name="userImage[]" defaultValue={this.state.imageUrl} onChange={this.onChange} ref={ref => this.imageUrl = ref} />
+                        </div>
                     </div>
                     <input type="submit" value="Done editing" />
                 </form>
@@ -77,7 +89,7 @@ export default class EditingBox extends React.Component {
         }
         return (
             <div className="editingBox">
-                <i className="fa fa-edit" onClick={() => this.setState({ editing: true })}></i>
+                <a onClick={() => this.setState({ editing: true })}>Edit Info</a>
                 {editingTemp}
             </div>
         )

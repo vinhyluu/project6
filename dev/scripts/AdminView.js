@@ -111,44 +111,54 @@ class AdminView extends React.Component {
 
 
     render() {
-        const divStyle = {
-            background: "black",
-            width: "50px",
-            height: "50px",
-        }
+
         return (
             <section className="adminContainer">
                 <h2 className="sectionHeading">Dashboard</h2>
                 <div>
                     <div>
-                        <div className="userDetails">
+                        <div className="userDetails clearfix">
                             <div className="imgContainer">
                                 <img src={this.state.imageUrl} alt="" />
                             </div>
                             <div className="userContentContainer">
                                 <div className="userContent">
                                     <p className="bodyContent">{this.state.note}</p>
+                                    <a href={`${this.state.twitter}`}>
+                                        <i className="fa fa-twitter" aria-hidden="true"></i>
+                                    </a>
+                                    <a href={`${this.state.instagram}`}>
+                                        <i className="fa fa-instagram" aria-hidden="true"></i>
+                                    </a>
                                 </div>
                                 <div className="contentEdit">
-                                    <p className="bodyContent">Click to edit your information!</p>
+                                    <p className="bodyContent"></p>
+                                    
                                     <EditingBox
                                         userkey={this.props.userkey} />
+                                    <p className="editColorTitle" onClick={this.showColors}>Edit Colors</p>
+                                    
+                                    {this.state.showColors ?
+                                        <div className="colorBoxes">
+                                            <div className="colors color1"onClick={(e) => this.toggleColor(e, "userOption1")}></div>
+                                            <div className="colors color2" onClick={(e) => this.toggleColor(e, "userOption2")}></div>
+                                            <div className="colors color3" onClick={(e) => this.toggleColor(e, "userOption3")}></div>
+                                            <div className="colors color4" onClick={(e) => this.toggleColor(e, "userOption4")}></div>
+                                        </div>
+                                        : null}
                                 </div>
                             </div>
                         </div>
-
-                        <p>{this.state.note}</p>
-                        <a href={`${this.state.twitter}`}>
-                            <i className="fa fa-twitter" aria-hidden="true"></i>
-                        </a>
-                        <a href={`${this.state.instagram}`}>
-                            <i className="fa fa-instagram" aria-hidden="true"></i>
-                        </a>
                     </div>
+
+                    <div>
+                        <h2 className="bagTitle">My Bag</h2>
+                    </div>
+                    
                     {this.state.currentItems.map((item) => {
                         return (
                             <div key={item.selectionKey}>
-                                <div className="wrapper">
+                                {/* <div className="wrapper"> */}
                                     <div className="bagContainer">
                                         <div className="bagItems">
                                             <img src={item.imageUrl} alt="" />
@@ -159,22 +169,11 @@ class AdminView extends React.Component {
                                             <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i>Remove Public</a>
                                         </div>
                                     </div>
-                                </div>
+                                {/* </div> */}
                             </div>
                         )
                     })}
                 </div>
-
-                <p onClick={this.showColors}>Show Colors</p>
-                {this.state.showColors ?
-                    <div>
-                        <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
-                        <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>
-                        <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption3")}></div>
-                        <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption4")}></div>
-                        <p>Click to change accent color on your public page</p>
-                    </div>
-                    : null}
             </section>
         )
     }
