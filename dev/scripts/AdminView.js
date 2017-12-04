@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import firebase from './firebase';
 import EditingBox from './EditingBox';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-class AdminView extends React.Component {
-    constructor() {
+class AdminView extends React.Component{
+    constructor(){
         super();
         this.state = {
             currentItems: [],
@@ -16,7 +16,7 @@ class AdminView extends React.Component {
         this.addPublic = this.addPublic.bind(this);
         this.removePublic = this.removePublic.bind(this);
     }
-    componentDidMount() {
+    componentDidMount(){
         const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
         const userItems = [];
         dbRef.once("value", (res) => {
@@ -30,7 +30,7 @@ class AdminView extends React.Component {
             })
         })
     }
-
+    
     removeItem(e, key) {
         e.preventDefault();
         const toRemove = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
@@ -62,11 +62,11 @@ class AdminView extends React.Component {
             active: false,
         });
     }
-    toggleClass() {
+    toggleClass(){
         const currentState = this.state.active;
-        this.setState({ active: !currentState })
+        this.setState({ active: !currentState})
     }
-    toggleColor(e, colorValue) {
+    toggleColor(e, colorValue){
         e.preventDefault();
         this.setState({
             testColor: colorValue
@@ -88,10 +88,7 @@ class AdminView extends React.Component {
             <div>
                 <div>
                     <div>
-                        <div>
-                            <img src={`${this.state.imageUrl}`} alt="" />
-                            <button className={this.state.active ? 'your_className' : null} onClick={this.toggleClass}><i className="fa fa-plus" aria-hidden="true"></i></button>
-                        </div>
+                      
                         <EditingBox />
                         <p>{this.state.note}</p>
                         <a href={`${this.state.twitter}`}>
@@ -116,6 +113,8 @@ class AdminView extends React.Component {
                         )
                     })}
                 </div>
+                {/* <Link>
+                </Link> */}
                 <div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
                     <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>

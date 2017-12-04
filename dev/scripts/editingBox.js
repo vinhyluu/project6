@@ -76,13 +76,10 @@ export default class EditingBox extends React.Component {
 
         this.setState({
             editing: false,
-
             // note: "",
             // instagram: "",
             // twitter: "",
             // imageUrl: ""
-
-
         })
     }
     render() {

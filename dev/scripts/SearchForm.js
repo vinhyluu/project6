@@ -103,8 +103,6 @@ class SearchForm extends React.Component {
     }
         
         pageResults(results) {
-
-
             let existingIds = this.state.ids
 
             let filteredArray = results.filter(function (item) {
