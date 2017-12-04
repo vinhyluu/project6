@@ -87,8 +87,7 @@ class AdminView extends React.Component{
         return (
             <div>
                 <div>
-                    <div>
-                      
+                    <div>     
                         <EditingBox />
                         <p>{this.state.note}</p>
                         <a href={`${this.state.twitter}`}>
@@ -98,16 +97,28 @@ class AdminView extends React.Component{
                             <i className="fa fa-instagram" aria-hidden="true"></i>
                         </a>
                     </div>
+
+                    <div>
+                        <h1>Dashboard</h1>
+                    </div>
+
+                    <div>
+                        <h2>My Bag</h2>
+                    </div>
                     {this.state.currentItems.map((item) => {
                         return (
                             <div key={item.selectionKey}>
                                 <div className="wrapper">
-                                    <img src={item.imageUrl} alt="" />
-                                    <h1>{item.brandTitle}</h1>
-                                    <p>{item.productDescription}</p>
-                                    <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}>test</a>
-                                    <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}>Add Public</a>
-                                    <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}>Remove Public</a>
+                                    <div className="bagContainer">
+                                        <div className="bagItems">
+                                            <img src={item.imageUrl} alt="" />
+                                            <h1>{item.brandTitle}</h1>
+                                            <p>{item.productDescription}</p>
+                                            <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}><i className="fa fa-minus-square-o" aria-hidden="true"></i>Remove From List</a>
+                                            <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}><i className="fa fa-plus-square-o" aria-hidden="true"></i>Add Public</a>
+                                            <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i>Remove Public</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         )
