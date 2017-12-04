@@ -16,19 +16,10 @@ class App extends React.Component {
         <div>
           {/* <Nav/> */}
           <Landing />
-<<<<<<< HEAD
-          <h1>Makeup App</h1>
-          <SearchForm />
-          {/* <ProfileView /> */}
-          {/* <Nav /> */}
-          <AdminView />
-          <PublicPage/>
-=======
           {/* <h1>Makeup App</h1> */}
           {/* <SearchForm /> */}
           {/* <AdminView /> */}
           {/* <PublicPage/> */}
->>>>>>> 54a14e6ae50ce1ac7e9cfc61a1bd638d61a483a0
         </div>
       )
     }
