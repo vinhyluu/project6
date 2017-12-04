@@ -77,6 +77,7 @@ class SearchForm extends React.Component {
             })
         }
 
+
     componentDidMount() {
         const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
         const deactiveItem = [];
@@ -102,6 +103,7 @@ class SearchForm extends React.Component {
         })
     }
         
+
         pageResults(results) {
             let existingIds = this.state.ids
 
@@ -120,15 +122,12 @@ class SearchForm extends React.Component {
                 <div>
                     <form action="" onSubmit={this.handleSubmit}>
                         <div className="searchContainer">
-
                             <div className="brandContainer">
                                 <input type="text" name="brand" value={this.state.searchByBrand} onChange={this.handleBrand} />
                             </div>
-
                             <div className="typeContainer">
                                 <input type="text" name="type" value={this.state.searchByType} onChange={this.handleType} />
                             </div>
-
                             <div className="submitContainer">
                                 <input type="submit" name="submit" />
                             </div>
