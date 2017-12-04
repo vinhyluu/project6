@@ -17,7 +17,7 @@ class AdminView extends React.Component{
         this.removePublic = this.removePublic.bind(this);
     }
     componentDidMount(){
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
         const userItems = [];
         dbRef.once("value", (res) => {
             const data = res.val();
@@ -26,16 +26,16 @@ class AdminView extends React.Component{
                 userItems.push(value);
             }
             this.setState({
-                currentItems: userItems
+                currentItems: userItems,
             })
         })
     }
     
     removeItem(e, key) {
         e.preventDefault();
-        const toRemove = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
+        const toRemove = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
         toRemove.remove();
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
         const newUserItems = [];
         dbRef.on("value", (res) => {
             const data = res.val();
@@ -50,14 +50,14 @@ class AdminView extends React.Component{
     }
     addPublic(e, key) {
         e.preventDefault();
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
         dbRef.update({
             active: true,
         });
     }
     removePublic(e, key) {
         e.preventDefault();
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child(`selections/${key}`);
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
         dbRef.update({
             active: false,
         });
@@ -71,7 +71,7 @@ class AdminView extends React.Component{
         this.setState({
             testColor: colorValue
         })
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1");
+        const dbRef = firebase.database().ref(`${this.props.userkey}`);
         dbRef.update({
             backgroundColor: colorValue
         })

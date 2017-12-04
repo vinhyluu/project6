@@ -10,11 +10,11 @@ class PublicPage extends React.Component{
         }
     }
 
-    componentDidMount() {
-        const dbRef = firebase.database().ref("N5eadjZta9gfwlPBYiKIx2Q1G7v1").child("selections");
+    componentDidMount(){
+        const dbRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
 
         const deactiveItem = [];
-        dbRef.on("value", (res) => {
+        dbRef.once("value", (res) => {
             const data = res.val();
             for (let key in data) {
                 const value = data[key];
@@ -25,7 +25,7 @@ class PublicPage extends React.Component{
             for (var i = 0; i < deactiveItem.length; i++) {
                 if (deactiveItem[i].active === true) {
                     activeItems.push(deactiveItem[i]);
-                }
+                } 
             }
 
             this.setState({
@@ -33,21 +33,22 @@ class PublicPage extends React.Component{
             })
         })
     }
-
 render(){
     return(
-        <div>
-            {this.state.publicItems.map((items) => {
-                return(
-                    <div key={items.selectionKey}>
-                        <img src={items.imageUrl} alt="" />
-                        <h3>{items.brandTitle}</h3>
-                        <p>{items.productDescription}</p>
-                        <a href={items.productUrl}>Shop</a>
-                    </div>
-                )
-            })}
-        </div>
+        <section>
+            <div>
+                {this.state.publicItems.map((items) => {
+                    return(
+                        <div key={items.selectionKey}>
+                            <img src={items.imageUrl} alt="" />
+                            <h3>{items.brandTitle}</h3>
+                            <p>{items.productDescription}</p>
+                            <a href={items.productUrl}>Shop</a>
+                        </div>
+                    )
+                })}
+            </div>
+        </section>
         )
     }
 }
