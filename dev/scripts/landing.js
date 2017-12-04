@@ -84,9 +84,10 @@ class Landing extends React.Component {
 
                             </div>
                             <div className="landingControls">
-                                <img className="signInLogo" src="./public/images/logo.png" alt=""/>
-                                
-                                <a href="" onClick={this.login}>Sign in with Google</a>
+                                <div className="unitSignIn">
+                                    <img className="signInLogo" src="./public/images/logo.png" alt=""/>
+                                    <a href="" onClick={this.login}>Sign in with Google</a>
+                                </div>
                             </div>
                         </section>
                         : <Dashboard
