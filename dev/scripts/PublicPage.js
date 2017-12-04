@@ -7,6 +7,12 @@ class PublicPage extends React.Component{
         super();
         this.state = {
             publicItems: [],
+            instagram: "",
+            twitter: "",
+            note: "",
+            imageUrl: "",
+            name: "",
+            colorPick: "",
         }
     }
 
@@ -32,10 +38,39 @@ class PublicPage extends React.Component{
                 publicItems: activeItems,
             })
         })
+
+        const infoRef = firebase.database().ref(`${this.props.userkey}`);
+        const userInfo = [];
+        infoRef.on("value", (res) => {
+            const data = res.val();
+            userInfo.push(res);
+            this.setState({
+                instagram: data.instagram,
+                twitter: data.twitter,
+                note: data.note,
+                imageUrl: data.imageUrl,
+                name: data.name,
+                colorPick: data.backgroundColor,
+            })
+        })
     }
 render(){
     return(
-        <section>
+        <section className="profileContainer">
+            <div className="profileImage">
+                <img src={this.state.imageUrl} alt="" />
+                <div className={this.state.colorPick}></div>
+            </div>
+            <div className="profileContent">
+                <h2 className="profileHeading">{this.state.name}</h2>
+                <p className="bodyContent">{this.state.note}</p>
+                <a href={`http://twitter.com/${this.state.twitter}`}>
+                    <i className="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href={`http://instagram.com/${this.state.instagram}`}>
+                    <i className="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+            </div>
             <div>
                 {this.state.publicItems.map((items) => {
                     return(
