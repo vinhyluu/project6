@@ -25,6 +25,7 @@ export default class EditingBox extends React.Component {
             [e.target.name]: e.target.value,
         })
     }
+
     onChange(e) {
         const file = document.getElementById("userImage").files[0];
         const storageRef = firebase.storage().ref(file.name);
@@ -39,9 +40,10 @@ export default class EditingBox extends React.Component {
         }.bind(this));
     }
 
-    save(e){
+    save(e) {
         e.preventDefault();
         const dbRef = firebase.database().ref(`${this.props.userkey}`);
+
         dbRef.update({
             note: this.note.value,
             instagram: this.instagram.value,
@@ -67,7 +69,7 @@ export default class EditingBox extends React.Component {
                         <input type="text" defaultValue={this.state.note} onChange={this.handleChange} name="note" ref={ref => this.note = ref} />
                         <input type="text" defaultValue={this.state.instagram} onChange={this.handleChange} name="instagram" ref={ref => this.instagram = ref} />
                         <input type="text" defaultValue={this.state.twitter} onChange={this.handleChange} name="twitter" ref={ref => this.twitter = ref} />
-                        <input type="file" id="userImage" name="userImage[]" defaultValue={this.state.imageUrl}  onChange={this.onChange} ref={ref => this.imageUrl = ref}/>
+                        <input type="file" id="userImage" name="userImage[]" defaultValue={this.state.imageUrl} onChange={this.onChange} ref={ref => this.imageUrl = ref} />
                     </div>
                     <input type="submit" value="Done editing" />
                 </form>

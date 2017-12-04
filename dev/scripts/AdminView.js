@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import firebase from './firebase';
 import EditingBox from './EditingBox';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-class AdminView extends React.Component{
-    constructor(){
+class AdminView extends React.Component {
+    constructor() {
         super();
         this.state = {
             currentItems: [],
@@ -22,16 +22,12 @@ class AdminView extends React.Component{
         this.removePublic = this.removePublic.bind(this);
         this.showColors = this.showColors.bind(this);
     }
-    
 
-    componentDidMount(){
+
+    componentDidMount() {
         const itemRef = firebase.database().ref(`${this.props.userkey}`).child("selections");
         const userItems = [];
-<<<<<<< HEAD
-        dbRef.on("value", (res) => {
-=======
         itemRef.once("value", (res) => {
->>>>>>> 16db972548a74e2b32e5ca5ad3094a6343cc95a0
             const data = res.val();
             for (let key in data) {
                 const value = data[key];
@@ -55,7 +51,7 @@ class AdminView extends React.Component{
             })
         })
     }
-    
+
     removeItem(e, key) {
         e.preventDefault();
         const toRemove = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
@@ -73,6 +69,7 @@ class AdminView extends React.Component{
             })
         })
     }
+
     addPublic(e, key) {
         e.preventDefault();
         const dbRef = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
@@ -80,6 +77,7 @@ class AdminView extends React.Component{
             active: true,
         });
     }
+
     removePublic(e, key) {
         e.preventDefault();
         const dbRef = firebase.database().ref(`${this.props.userkey}`).child(`selections/${key}`);
@@ -87,11 +85,13 @@ class AdminView extends React.Component{
             active: false,
         });
     }
-    toggleClass(){
+
+    toggleClass() {
         const currentState = this.state.active;
-        this.setState({ active: !currentState})
+        this.setState({ active: !currentState })
     }
-    toggleColor(e, colorValue){
+
+    toggleColor(e, colorValue) {
         e.preventDefault();
         this.setState({
             testColor: colorValue
@@ -102,10 +102,12 @@ class AdminView extends React.Component{
         })
     }
 
-    showColors(e){
+    showColors(e) {
         e.preventDefault();
         this.setState({ showColors: !this.state.showColors });
     }
+
+
 
 
     render() {
@@ -118,25 +120,23 @@ class AdminView extends React.Component{
             <section className="adminContainer">
                 <h2 className="sectionHeading">Dashboard</h2>
                 <div>
-<<<<<<< HEAD
-                    <div>     
-                        <EditingBox />
-=======
                     <div>
                         <div className="userDetails">
                             <div className="imgContainer">
-                                <img src={this.state.imageUrl} alt=""/>
+                                <img src={this.state.imageUrl} alt="" />
                             </div>
-                            <div className="userContent">
-                                <p className="bodyContent">{this.state.note}</p>
-                            </div>
-                            <div className="contentEdit">
-                                <p className="bodyContent">Click to edit your information!</p>
-                                <EditingBox
-                                    userkey={this.props.userkey} />
+                            <div className="userContentContainer">
+                                <div className="userContent">
+                                    <p className="bodyContent">{this.state.note}</p>
+                                </div>
+                                <div className="contentEdit">
+                                    <p className="bodyContent">Click to edit your information!</p>
+                                    <EditingBox
+                                        userkey={this.props.userkey} />
+                                </div>
                             </div>
                         </div>
->>>>>>> 16db972548a74e2b32e5ca5ad3094a6343cc95a0
+
                         <p>{this.state.note}</p>
                         <a href={`${this.state.twitter}`}>
                             <i className="fa fa-twitter" aria-hidden="true"></i>
@@ -144,14 +144,6 @@ class AdminView extends React.Component{
                         <a href={`${this.state.instagram}`}>
                             <i className="fa fa-instagram" aria-hidden="true"></i>
                         </a>
-                    </div>
-
-                    <div>
-                        <h1>Dashboard</h1>
-                    </div>
-
-                    <div>
-                        <h2>My Bag</h2>
                     </div>
                     {this.state.currentItems.map((item) => {
                         return (
@@ -172,19 +164,16 @@ class AdminView extends React.Component{
                         )
                     })}
                 </div>
-<<<<<<< HEAD
 
-=======
                 <p onClick={this.showColors}>Show Colors</p>
                 {this.state.showColors ?
->>>>>>> 16db972548a74e2b32e5ca5ad3094a6343cc95a0
-                <div>
-                    <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
-                    <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>
-                    <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption3")}></div>
-                    <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption4")}></div>
-                    <p>Click to change accent color on your public page</p>
-                </div>
+                    <div>
+                        <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption1")}></div>
+                        <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption2")}></div>
+                        <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption3")}></div>
+                        <div style={divStyle} onClick={(e) => this.toggleColor(e, "userOption4")}></div>
+                        <p>Click to change accent color on your public page</p>
+                    </div>
                     : null}
             </section>
         )

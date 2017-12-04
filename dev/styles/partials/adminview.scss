@@ -8,6 +8,7 @@
     width: 25%;
     text-align: center; 
     margin-bottom: 50px;
+    height: 300px;
 }
 
 .bagContainer h1{
@@ -25,4 +26,22 @@
 
 .bagContainer i{
     margin-right: 3px;
+}
+
+
+.imgContainer img{
+    max-width: 100%;
+}
+
+.sectionHeading{
+    font-size: 10rem;
+}
+
+.userDetails{
+    width: 100%;
+}
+
+.imgContainer, .userContentContainer{
+    float: left;
+    width: 25%;
 }
