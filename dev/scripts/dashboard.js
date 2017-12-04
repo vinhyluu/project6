@@ -57,7 +57,6 @@ class Dashboard extends React.Component {
                 {this.state.existingUser === false
                     ? <section>
                         <Form userkey={this.props.userKey} />
-                        <button onClick={this.editInfo}>BUTTON</button>
                     </section>
                     : <TopNav userkey={this.props.userKey} />}
             </div>
@@ -105,22 +104,3 @@ class TopNav extends React.Component {
 }
 
 export default Dashboard;
-
-// <Router>
-//     <div className=“wrapper”>
-//           <Switch>
-//         <Route
-//             exact path=“/”
-//               render={props => <LandingPage {...props} formSubmit={this.getMeetups} />}
-//         />
-//             <Route
-//             exact path=“/meetups”
-//               render={props => <Meetups {...props} data={this.state.meetups} onClick={this.getRestaurantRefs} />}
-//         />
-//             <Route
-//             exact path=“/restaurants”
-//               render={props => <Restaurants {...props} data={this.state.restaurants} />}
-//         />
-//           </Switch>
-//         </div>
-//       </Router >

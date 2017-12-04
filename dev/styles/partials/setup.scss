@@ -14,9 +14,14 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 $nude-color: #eba78d;
 $pink-color: #fac8e2;
 $skin-color: #e5bb9e;
-$yellow-color: #dca852;
+$yellow-color:#dca852;
 /* Type Styles */
 
+
+/*Body*/
+body{
+    background: linear-gradient(45deg, rgba(235, 167, 141, .25), #FFF);
+}
 /* Heading */
 h1, 
 h2,

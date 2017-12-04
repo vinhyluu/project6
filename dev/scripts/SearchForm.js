@@ -119,20 +119,26 @@ class SearchForm extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    <form action="" onSubmit={this.handleSubmit}>
-                        <div className="searchContainer">
-                            <div className="brandContainer">
-                                <input type="text" name="brand" value={this.state.searchByBrand} onChange={this.handleBrand} />
-                            </div>
-                            <div className="typeContainer">
-                                <input type="text" name="type" value={this.state.searchByType} onChange={this.handleType} />
-                            </div>
-                            <div className="submitContainer">
-                                <input type="submit" name="submit" />
-                            </div>
+                <div className="searchPage">
+                    <div className="inputWrapper">
+                        <form action="" onSubmit={this.handleSubmit} className="searchContainer clearfix">
+                                <div className="brandContainer selectedContainer">
+                                    <div className="textWrapper">
+                                        <h3>Brand</h3>
+                                        <input className="searchInput" type="text" name="brand" value={this.state.searchByBrand} onChange={this.handleBrand} autoFocus/>
+                                    </div>
+                                </div>
+                                <div className="typeContainer selectedContainer">
+                                    <div className="textWrapper"> 
+                                        <h3>Makeup Type</h3>
+                                        <input className="searchInput" type="text" name="type" value={this.state.searchByType} onChange={this.handleType} autoFocus/>
+                                    </div>
+                                </div>
+                        </form>
+                        <div className="submitContainer">
+                            <input type="submit" name="submit" />
                         </div>
-                    </form>
+                    </div>
                 </div>
                 <div className="returnedData">
                     {this.state.results.map((brand, index) => {
