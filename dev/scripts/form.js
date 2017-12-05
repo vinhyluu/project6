@@ -69,27 +69,30 @@ class Form extends React.Component {
     render(){
         
         return(
-            <section>
-                <div className="wrapper">
-                    <h1>Create Your Profile</h1>
-                    <form onSubmit={this.handleClick}>
-                        <div className="userImage">
-                            <input type="file" name="userImage[]" id="userImage" ref={ref => this.imageUrl = ref}/>
-                        </div>
-                        <div className="note">
-                            <label htmlFor="note"></label>
-                            <textarea name="note" id="note" maxLength="280" ref={ref => this.note = ref}></textarea>
-                        </div>
-                         <div className="twitterLink">
-                            <label htmlFor="twitter">Twitter Link</label>
-                            <input type="text" name="twitter" id="twitter" ref={ref => this.twitter = ref} />
-                        </div>
-                         <div className="instagramLink">
-                             <label htmlFor="instagram">Instagram Link</label>
-                             <input type="text" name="instagram" id="instagram" ref={ref => this.instagram = ref} />
-                        </div>
-                        <input className="submit" type="submit" value="Add" />
-                    </form> 
+            <section className="formSection">
+                <div className="inputWrapper">
+                    <div className="searchContainer formBox">
+                        <h1 className="formTitle">Create Your Profile</h1>
+                        <form onSubmit={this.handleClick}>
+                            <div className="userImage inputBox">
+                                <input className="formInput fileInput"
+                                type="file" name="userImage[]" id="userImage" ref={ref => this.imageUrl = ref}/>
+                            </div>
+                            <div className="note inputBox">
+                                <label htmlFor="note">Describe Yourself</label>
+                                <textarea className="formInput" name="note" id="note" maxLength="280" ref={ref => this.note = ref}></textarea>
+                            </div>
+                            <div className="twitterLink inputBox">
+                                <label htmlFor="twitter">Twitter Link</label>
+                                <input placeholder="@yourtwitter"className="formInput" type="text" name="twitter" id="twitter" ref={ref => this.twitter = ref} />
+                            </div>
+                             <div className="instagramLink inputBox">
+                                <label htmlFor="instagram">Instagram Link</label>
+                                 <input placeholder="@yourinstagram"className="formInput" type="text" name="instagram" id="instagram" ref={ref => this.instagram = ref} />
+                            </div>
+                            <input className="formSubmitButton" type="submit" value="Add" />
+                        </form> 
+                    </div>
                 </div> 
             </section>
         )

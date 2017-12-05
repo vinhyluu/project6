@@ -2,8 +2,64 @@ section {
     width: 100vw;
     height: 100vh;
     // background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
+
+.formSection{
+width: 100vw;
+height: 100vh;
+background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
 }
 
-.wrapper{
-    margin: 80%;
+.inputWrapper{
+    margin-top: 100px;
+}
+.inputBox{
+    padding-bottom: 50px;
+    font-size: 1.2rem;
+}
+.formInput{
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    border-radius: 0;
+    width: 100%;
+    letter-spacing: .1rem;
+}
+.formInput:focus{
+    outline: 2px solid hsla(328, 83%, 88%, 0.486);
+}
+
+.inputBox textarea{
+    height: 120px;
+    width: 230px; 
+}
+
+.inputBox label{
+    font-size: 1.3rem;
+}
+.formBox{
+    padding: 0 30%;
+    margin-top: 20px;
+    position: relative;
+}
+
+.formTitle{
+    font-size: 3rem;
+    padding-bottom: 70px;
+}
+
+.formSubmitButton{
+    position: absolute;
+    bottom: -5%;
+    right: 9%;
+    transform: translate(-5%, 8.5%);
+    outline: none;
+    border: none;
+    background: #f7f7f7;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    padding: 12px 35px;
+    transition: .35s;
 }
