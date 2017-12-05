@@ -135,7 +135,7 @@ class SearchForm extends React.Component {
                                     </div>
                                 </div>
                                 <div className="submitContainer">
-                                    <input type="submit" name="submit" />
+                                    <input className="searchSubmitButton"type="submit" name="submit" />
                                  </div>
                         </form>
                     </div>
@@ -184,13 +184,17 @@ class MakeUpProducts extends React.Component {
 
     render() {
         return (
-            <div>
-                <a href="" onClick={this.addItem}>TEST</a>
-                <img src={this.props.data.image_link} alt="" />
-                <h3>{this.props.data.brand}</h3>
-                <p>{this.props.data.name}</p>
-                <a href={`${this.props.data.product_link}`} target="_blank">Buy Me</a>
-                <p className="visuallyHidden">{this.props.data.id}</p>
+            <div className="bagContainer">
+                <div className="bagItems">
+                    <img src={this.props.data.image_link} alt="" />
+                    <h3>{this.props.data.brand}</h3>
+                    <p>{this.props.data.name}</p>
+                    <div className="bagLinks">
+                        <a href="" onClick={this.addItem}><i className="fa fa-plus-square-o" aria-hidden="true"></i>Add to Bag</a> 
+                        <a href={`${this.props.data.product_link}`} target="_blank">Buy Me</a>  
+                    </div> 
+                    <p className="visuallyHidden">{this.props.data.id}</p>
+                </div>
             </div>
         )
     }

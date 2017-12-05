@@ -1,0 +1,33 @@
+h3.navLogo {
+    display: inline-block;
+    font-size: 2.5rem;
+    margin: 35px 0;
+    color: #eba78d;
+}
+
+.nav {
+    margin: 35px 0;
+    float: right;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+
+    .navLink {
+        font-size: 1.3rem;
+        padding: 10px 15px;
+        color: #575757;
+        transition: .25s ease;
+    }
+
+    li:last-child {
+        padding: 10px 0 10px 15px;
+    }
+
+    .navLink:hover {
+        color: #eba78d;
+    }
+}
+
+.switch{
+    clear: both;
+}

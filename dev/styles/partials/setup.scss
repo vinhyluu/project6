@@ -36,7 +36,7 @@ $yellow-color:#dca852;
 
 /*Body*/
 body{
-    background: linear-gradient(45deg, rgba(235, 167, 141, .25), #FFF);
+    // background: linear-gradient(45deg, rgba(235, 167, 141, .25), #FFF);
 }
 /* Heading */
 h1, 
@@ -56,6 +56,7 @@ p {
 
 a {
     margin: 0;
+    color: #575757;
     font-family: 'Work Sans', sans-serif;
     text-decoration: none;
 }
@@ -100,23 +101,6 @@ $desktop-width: 1024px;
 //   }
 // }
 
-@mixin desktop {
-    @media (max-width: 1024px) {
-        @content;
-    }
-}
-
-@mixin tablet {
-    @media (max-width: #{tablet-width}) {
-        @content;
-    }
-}
-
-@mixin mobile {
-    @media (max-width: #{mobile-width}) {
-        @content;
-    }
-}
 
 
 
