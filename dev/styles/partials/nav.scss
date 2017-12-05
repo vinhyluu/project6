@@ -19,6 +19,10 @@ h3.navLogo {
         transition: .25s ease;
     }
 
+    li:first-child {
+        padding: 10px 15px 10px 
+    }
+
     li:last-child {
         padding: 10px 0 10px 15px;
     }
