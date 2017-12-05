@@ -93,6 +93,7 @@ class TopNav extends React.Component {
                             <li><Link to={`/public/${this.props.userkey}`} className="navLeft">Public Page</Link></li>
                         {/* </div> */}
                         <li onClick={this.logout} className="navRight">Logout</li>
+
                     </ul>
                     <Switch className="switch">
                         <Route exact path="/dashboard" render={props => <AdminView {...props} userkey={this.props.userkey}/>}/>
