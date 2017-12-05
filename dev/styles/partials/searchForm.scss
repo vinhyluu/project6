@@ -1,7 +1,6 @@
 .searchPage{
         margin-top: 2vh;
         margin-left: 1.75vw;
-       
 }
 
 .inputWrapper{
@@ -9,12 +8,20 @@
     top: 35%;
     left: 25%;
     transform: translate(0, -50%);
+
+    // @include tablet {
+    //     left: 6%;
+    // }
 }
 
 .searchContainer{
     width: 750px;
     // box-shadow: 10px 10px 0px rgb(80, 63, 63);
-    box-shadow: 10px 10px 0px rgba(80, 63, 63,0.3);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+
+    // @include tablet {
+    //     width: 762px;
+    // }
 }
 
 .searchContainer .clearfix:after {
@@ -33,10 +40,6 @@
 }
 
 .brandContainer:hover{
-    background: none;
-}
-
-.brandContainer{
     background: rgba(235, 167, 141, .17);
     // transition: .35s;
 }
@@ -44,14 +47,6 @@
 .typeContainer:hover {
     background: rgba(235, 167, 141, .17);
     transition: .35s;
-}
-
-.brandContainer:hover .typeContainer {
-    background: rgba(235, 167, 141, .17);
-}
-
-.typeContainer:hover .brandContainer {
-    background: none;
 }
 
 .textWrapper{
@@ -96,6 +91,187 @@
     display: none;
 }
 
+@media (max-width: 1161px) {
+    .inputWrapper {
+        left: 13%;
+    }
+} 
+
+@media (max-width: 1120px) {
+    .inputWrapper {
+        left: 10%;
+    }
+} 
+
+@media (max-width: 1079px) {
+    .searchContainer {
+        width: 901px;
+    }
+}
+
+@media (max-width: 1031px) {
+    .searchContainer {
+        width: 849px;
+    }
+}
+
+@media (max-width: 992px) {
+    .searchContainer {
+        width: 812px;
+    }
+}
+
+@media (max-width: 941px) {
+    .searchContainer {
+        width: 770px;
+    }
+}
+
+@media (max-width: 892px) {
+    .searchContainer {
+        width: 724px;
+    }
+}
+
+@media (max-width: 836px) {
+    .searchContainer {
+        width: 681px;
+    }
+}
+
+@media (max-width: 793px) {
+    .searchContainer {
+        width: 649px;
+    }
+}
+
+@media (max-width: 768px) {
+    .selectedContainer {
+        float: none;
+        width: 100%;
+    }
+
+    .searchContainer {
+        margin-top: 25%;
+    }
+} 
+
+@media (max-width: 749px){
+    .searchContainer {
+        width: 628px;
+    }
+}
+
+@media (max-width: 720px) {
+    .searchContainer {
+        width: 600px;
+    }
+}
+
+@media (max-width: 697px) {
+    .searchContainer {
+        width: 573px;
+    }
+}
+
+@media (max-width: 659px) {
+    .searchContainer {
+        width: 549px;
+    }
+}
+
+@media (max-width: 639px) {
+    .searchContainer {
+        width: 528px;
+    }
+}
+
+@media (max-width: 612px) {
+    .searchContainer {
+        width: 500px;
+    }
+}
+
+@media (max-width: 589px) {
+    .searchContainer {
+        width: 476px;
+    }
+}
+
+@media (max-width: 557px) {
+    .searchContainer {
+        width: 448px;
+    }
+}
+
+@media (max-width: 534px) {
+    .searchContainer {
+        width: 428px;
+    }
+}
+
+@media (max-width: 509px) {
+    .searchContainer {
+        width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .searchContainer {
+        width: 383px;
+    }
+}
+
+@media (max-width: 460px) {
+    .searchContainer {
+        width: 365px;
+    }
+}
+
+@media (max-width: 438px) {
+    .searchContainer {
+        width: 343px;
+    }
+}
+
+@media (max-width: 411px) {
+    .searchContainer {
+        width: 322px;
+    }
+}
+
+@media (max-width: 393px) {
+    .searchContainer {
+        width: 304px;
+    }
+}
+
+@media (max-width: 368px) {
+    .searchContainer {
+        width: 288px;
+    }
+}
+
+@media (max-width: 354px) {
+    .searchContainer {
+        width: 275px;
+    }
+}
+
+@media (max-width: 340px) {
+    .searchContainer {
+        width: 267px;
+    }
+}
+
+@media (max-width: 320px) {
+    .searchContainer {
+        width: 254px;
+    }
+    .inputWrapper {
+        left: 1%;
+    }
+}
 //Styles applying from Public Page
 // .bagContainer{
 //     width: 100%;
