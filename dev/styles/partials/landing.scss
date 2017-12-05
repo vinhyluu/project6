@@ -8,50 +8,50 @@
     background: #FFF;
 }
 
-.unitSignIn{
+.unitSignIn {
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     height:315px;
     width: 315px;
     background: rgba(255, 255, 255, 0.541);
     position: absolute;
     top: 50%;
-    left: 31%;
-    transform: translate(0, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .landingControls {
-    border: 1px solid darkgrey;
     width: 65%;
     height: 100%;
     text-align: center;
     float: right;
     position: relative;
+
     a {
+        font-size: 1.6rem;
+        letter-spacing: .1rem;
         display: block;
-        // border: 1px solid #333;
         box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
-        width: 80%;
-        padding: 2.5% 0;
+        width: 60%;
+        height: 15%;
+        padding: 4.25% 0;
         color: #eba78d;
-        margin-left: 11%;
-        font-weight: bolder;
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -80%);
         
     }
+
     a:hover {
         box-shadow: 0 4px 10px #eba78d;
     }
 }
 
 .signInLogo{
-    // position: absolute;
     border-radius: 60%;
     padding-top: 5%;
-    // top: 20%;
-    // left: 43%;
     height: 200px;
     width: 200px;
-    
-
 }
 
 .landingPageSideImage {
@@ -59,7 +59,8 @@
     width: 33.33%;
     margin: 0;
     float: left;
-    img{
+
+    img {
         width: 100%;
         height: 105%;
         margin-top: -25px;
@@ -69,6 +70,45 @@
     }
 }
 
-// .wrappingWrapper{
-//     width: 80%;
-// }
+@media (max-width: 1024px) {
+
+    .unitSignIn {
+        width: 60%;
+        width: 275px;
+    }
+
+    .landingControls {
+        width: 55%;
+        margin-left: 15px;
+    }
+
+    .landingPageSideImage {
+        width: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .unitSignIn {
+        width: 50%;
+        background: rgba(255, 255, 255, 0.99);
+    }
+
+    .landingControls {
+        width: 100%;
+    }
+
+    .landingPageSideImage {
+        width: 96.5%;
+        position: absolute;
+    }
+
+    .landingPageSideImage img {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .unitSignIn {
+        width: 70%;
+    }
+}
