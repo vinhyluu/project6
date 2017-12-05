@@ -6,13 +6,15 @@
 
 .inputWrapper{
     position: absolute;
-    top: 50%;
+    top: 35%;
+    left: 15%;
     transform: translate(0, -50%);
 }
 
 .searchContainer{
-    width: 750px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+    width: 950px;
+    // box-shadow: 10px 10px 0px rgb(80, 63, 63);
+    box-shadow: 10px 10px 0px rgba(80, 63, 63,0.3);
 }
 
 .searchContainer .clearfix:after {
@@ -26,14 +28,32 @@
 
 .selectedContainer{
     float: left;
-    padding: 100px 0;
+    padding: 50px 0;
     width: 50% ; 
 }
 
-.selectedContainer:hover{
+.brandContainer:hover{
+    background: none;
+}
+
+.brandContainer{
+    background: rgba(235, 167, 141, .17);
+    // transition: .35s;
+}
+
+.typeContainer:hover {
     background: rgba(235, 167, 141, .17);
     transition: .35s;
 }
+
+.brandContainer:hover .typeContainer {
+    background: rgba(235, 167, 141, .17);
+}
+
+.typeContainer:hover .brandContainer {
+    background: none;
+}
+
 .textWrapper{
     width: 80%;
     height: 100%;
@@ -57,8 +77,8 @@
 
 .searchSubmitButton{
     position: absolute;
-    bottom: -8.5%;
-    right: 5%;
+    bottom: -15%;
+    right: 9%;
     transform: translate(-5%, 8.5%);
     outline: none;
     border: none;
@@ -67,8 +87,7 @@
     font-size: 1.4rem;
     line-height: 1.4rem;
     text-transform: uppercase;
-    font-weight: 700;
     letter-spacing: .1rem;
-    padding: 20px 55px;
+    padding: 12px 35px;
     transition: .35s;
 }
