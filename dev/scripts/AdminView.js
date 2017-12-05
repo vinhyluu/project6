@@ -133,8 +133,9 @@ class AdminView extends React.Component {
 
                                     <EditingBox
                                         userkey={this.props.userkey} />
-                                    <p className="editColorTitle" onClick={this.showColors}>Edit Colors</p>
 
+                                    <div>
+                                    <p className="editColorTitle" onClick={this.showColors}>Edit Colors</p>
                                     {this.state.showColors ?
                                         <div className="colorBoxes">
                                             <div className="colors color1" onClick={(e) => this.toggleColor(e, "userOption1")}></div>
@@ -143,6 +144,7 @@ class AdminView extends React.Component {
                                             <div className="colors color4" onClick={(e) => this.toggleColor(e, "userOption4")}></div>
                                         </div>
                                         : null}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +161,7 @@ class AdminView extends React.Component {
                                 <div className="bagContainer">
                                     <div className="bagItems">
                                         <img src={item.imageUrl} alt="" />
-                                        <h1>{item.brandTitle}</h1>
+                                        <h3>{item.brandTitle}</h3>
                                         <p>{item.productDescription}</p>
                                         <div className="bagLinksContainer">
                                             <div className="removeFromBag">
