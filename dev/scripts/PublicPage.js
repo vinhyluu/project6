@@ -57,10 +57,13 @@ class PublicPage extends React.Component{
 render(){
     return(
         <section className="profileContainer">
-            <div className="profileImage">
-                <img src={this.state.imageUrl} alt="" />
-                <div className={this.state.colorPick}></div>
+            <div className="imageContainer"> 
+                <div className="profileImage">
+                    <img src={this.state.imageUrl} alt="" />
+                    <div className={this.state.colorPick}></div>
+                </div>
             </div>
+
             <div className="profileContent">
                 <h2 className="profileHeading">{this.state.name}</h2>
                 <p className="bodyContent">{this.state.note}</p>
@@ -70,15 +73,21 @@ render(){
                 <a href={`http://instagram.com/${this.state.instagram}`}>
                     <i className="fa fa-instagram" aria-hidden="true"></i>
                 </a>
-            </div>
-            <div>
+
+                <div>
+                    <h1 className="publicMakeupTitle">Makeup Shopping Bag</h1>
+                </div>
                 {this.state.publicItems.map((items) => {
                     return(
-                        <div key={items.selectionKey}>
-                            <img src={items.imageUrl} alt="" />
-                            <h3>{items.brandTitle}</h3>
-                            <p>{items.productDescription}</p>
-                            <a href={items.productUrl}>Shop</a>
+                        <div className="publicMakeupContainer" key={items.selectionKey}>
+                            <div className="publicMakeup">
+                                <img src={items.imageUrl} alt="" />
+                                <h3>{items.brandTitle}</h3>
+                                <p>{items.productDescription}</p>
+                                <div className="publicLink">
+                                    <a href={items.productUrl}>Shop</a>
+                                </div> 
+                            </div>
                         </div>
                     )
                 })}
