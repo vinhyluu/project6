@@ -69,26 +69,29 @@ class Form extends React.Component {
     render(){
         
         return(
-            <div>
-                <form onSubmit={this.handleClick}>
-                    <div className="twitterLink">
-                        <label htmlFor="twitter">Twitter Link</label>
-                        <input type="text" name="twitter" id="twitter" ref={ref => this.twitter = ref} />
-                    </div>
-                    <div className="instagramLink">
-                        <label htmlFor="instagram">Instagram Link</label>
-                        <input type="text" name="instagram" id="instagram" ref={ref => this.instagram = ref} />
-                    </div>
-                    <div className="note">
-                        <label htmlFor="note"></label>
-                        <textarea name="note" id="note" maxLength="280" ref={ref => this.note = ref}></textarea>
-                    </div>
-                    <div className="userImage">
-                        <input type="file" name="userImage[]" id="userImage" ref={ref => this.imageUrl = ref}/>
-                    </div>
-                    <input className="submit" type="submit" value="Add" />
-                </form>  
-            </div>
+            <section>
+                <div className="wrapper">
+                    <h1>Create Your Profile</h1>
+                    <form onSubmit={this.handleClick}>
+                        <div className="userImage">
+                            <input type="file" name="userImage[]" id="userImage" ref={ref => this.imageUrl = ref}/>
+                        </div>
+                        <div className="note">
+                            <label htmlFor="note"></label>
+                            <textarea name="note" id="note" maxLength="280" ref={ref => this.note = ref}></textarea>
+                        </div>
+                         <div className="twitterLink">
+                            <label htmlFor="twitter">Twitter Link</label>
+                            <input type="text" name="twitter" id="twitter" ref={ref => this.twitter = ref} />
+                        </div>
+                         <div className="instagramLink">
+                             <label htmlFor="instagram">Instagram Link</label>
+                             <input type="text" name="instagram" id="instagram" ref={ref => this.instagram = ref} />
+                        </div>
+                        <input className="submit" type="submit" value="Add" />
+                    </form> 
+                </div> 
+            </section>
         )
     }
 }
