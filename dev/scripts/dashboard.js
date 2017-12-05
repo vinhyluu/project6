@@ -85,7 +85,7 @@ class TopNav extends React.Component {
     render() {
         return (
             <Router>
-                <div className="wrapper">
+                <div className="wrapper mainNavigation">
                     <ul>
                         <li><Link to={'/dashboard'}>Dashboard</Link></li>
                         <li><Link to={'/search'}>Search</Link></li>
