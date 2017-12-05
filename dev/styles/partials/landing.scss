@@ -5,7 +5,7 @@
     height: 96vh;
     margin-top: 2vh;
     margin-left: 1.75vw;
-    background: #efefef;
+    background: #FFF;
 }
 
 .unitSignIn{
@@ -55,12 +55,17 @@
 
 }
 
-.landingPageSideImage{
+.landingPageSideImage {
+    height: 100%;
+    width: 33.33%;
+    margin: 0;
+    float: left;
     img{
-        width: 31%;
-        height: 96vh;
-        float: left;
-        margin-left: 3%;
+        width: 100%;
+        height: 105%;
+        margin-top: -25px;
+        margin-left: 25px;
+        margin-right: -25px;
         object-fit: cover;
     }
 }

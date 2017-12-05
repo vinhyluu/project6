@@ -87,15 +87,15 @@ class TopNav extends React.Component {
             <Router>
                 <div className="wrapper">
                     <ul>
-                        <li><Link to={'/AdminView'}>Dashboard</Link></li>
-                        <li><Link to={'/SearchForm'}>Search</Link></li>
-                        <li><Link to={'/PublicPage'}>Public Page</Link></li>
+                        <li><Link to={'/dashboard'}>Dashboard</Link></li>
+                        <li><Link to={'/search'}>Search</Link></li>
+                        <li><Link to={`/public/${this.props.userkey}`}>Public Page</Link></li>
                         <li onClick={this.logout}>Logout</li>
                     </ul>
                     <Switch>
-                        <Route exact path="/AdminView" render={props => <AdminView {...props} userkey={this.props.userkey}/>}/>
-                        <Route exact path="/SearchForm" render={props => <SearchForm {...props} userkey={this.props.userkey}/>}/>
-                        <Route exact path="/PublicPage" render={props => <PublicPage {...props} userkey={this.props.userkey}/>}/>
+                        <Route exact path="/dashboard" render={props => <AdminView {...props} userkey={this.props.userkey}/>}/>
+                        <Route exact path="/search" render={props => <SearchForm {...props} userkey={this.props.userkey}/>}/>
+                        <Route exact path={`/public/${this.props.userkey}`} render={props => <PublicPage {...props} userkey={this.props.userkey}/>}/>
                     </Switch>
                 </div>
             </Router>
