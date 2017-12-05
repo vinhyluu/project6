@@ -1,6 +1,10 @@
 /*Public Page*/
+.profileContent::-webkit-scrollbar{
+    display: none;
+}
 .profileContainer{
     width: 100%;
+    margin-top: 50px;
 }
 
 .imageContainer{
@@ -30,8 +34,22 @@
 }
 
 .publicMakeup{
-    width: 50%;
+    width: calc(50% - 50px);
     float: left;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    height: 400px;
+    position: relative;
+}
+
+.publicMakeup img{
+    min-width: 100%;
+    height: 300px;
+}
+
+.publicLink{
+    position: absolute;
+    bottom: 0;
 }
 
 .profileHeading{
@@ -66,4 +84,16 @@
 
 .userOption4{
     background: #dca852;
+}
+
+.publicMakeup h3{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.publicMakeup p{
+    font-size: 1.4rem;
+    margin-bottom: 10px;
 }

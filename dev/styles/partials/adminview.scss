@@ -1,4 +1,8 @@
 /*Dashboard Page*/
+.adminContainer{
+    min-height: 100vh;
+}
+
 .bagContainer{
     width: 100%;
 }
@@ -8,11 +12,20 @@
     width: calc(25% - 20px);
     margin-bottom: 50px;
     margin-right: 20px;
+    height: 400px;
+    position: relative;
+}
+
+.bagItems img{
+    width: 100%;
+    height: 300px;
+    display: block;
 }
 
 .bagItems p{
     font-size: 1.4rem;
 }
+
 
 .bagContainer h1{
     margin-bottom: 10px;
@@ -25,21 +38,23 @@
     margin-bottom: 10px;
 }
 
-.bagContainer a{
+.bagItems a{
     margin-right: 10px;
     color: black;
 }
 
-.bagContainer i{
+.bagItems i{
     margin-right: 3px;
 }
 
-.bagImage{
-    width: 250px;
+.bagLinks{
+    position: absolute;
+    bottom: 0;
 }
 
-.bagImage img{
-    object-fit: cover;
+.bagTitle{
+    font-size: 3rem;
+    margin: 30px 0 30px 0;
 }
 
 .sectionHeading{
@@ -52,7 +67,7 @@
 }
 
 .imgContainer{
-    width: 50%;
+    width: calc(40% - 40px);
     margin-right: 40px;
     float: left;
 }
@@ -60,10 +75,11 @@
 .imgContainer img{
     max-width: 100%;
     height: 500px;
+    object-fit: cover;
 }
 
 .userContentContainer{
-    width: calc(50% - 40px);
+    width: 60%;
     float: left;
 }
 
@@ -128,10 +144,6 @@
     right: 0;
 }
 
-.bagTitle{
-    font-size: 3rem;
-    margin: 30px 0 30px 0;
-}
 
 .editInfoContainer{
     margin-top: 10px;

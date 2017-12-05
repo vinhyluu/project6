@@ -106,12 +106,8 @@ class AdminView extends React.Component {
         e.preventDefault();
         this.setState({ showColors: !this.state.showColors });
     }
-
-
-
-
+    
     render() {
-
         return (
             <section className="adminContainer">
                 <h2 className="sectionHeading">Dashboard</h2>
@@ -121,6 +117,7 @@ class AdminView extends React.Component {
                             <div className="imgContainer">
                                 <img src={this.state.imageUrl} alt="" />
                             </div>
+                            
                             <div className="userContentContainer">
                                 <div className="userContent">
                                     <p className="bodyContent">{this.state.note}</p>
@@ -161,14 +158,14 @@ class AdminView extends React.Component {
                                 {/* <div className="wrapper"> */}
                                 <div className="bagContainer">
                                     <div className="bagItems">
-                                        <div className="bagImage">
-                                            <img src={item.imageUrl} alt="" />
-                                        </div>
+                                        <img src={item.imageUrl} alt="" />
                                         <h1>{item.brandTitle}</h1>
                                         <p>{item.productDescription}</p>
+                                        <div className="bagLinks">
                                         <a href="" onClick={(e) => this.removeItem(e, item.selectionKey)}><i className="fa fa-minus-square-o" aria-hidden="true"></i>Remove From List</a>
                                         <a href="" onClick={(e) => this.addPublic(e, item.selectionKey)}><i className="fa fa-plus-square-o" aria-hidden="true"></i>Add Public</a>
                                         <a href="" onClick={(e) => this.removePublic(e, item.selectionKey)}><i className="fa fa-minus-square" aria-hidden="true"></i>Remove Public</a>
+                                        </div>
                                     </div>
                                 </div>
                                 {/* </div> */}
