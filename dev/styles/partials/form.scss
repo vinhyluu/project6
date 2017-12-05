@@ -23,14 +23,16 @@ background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
 .formInput:focus{
     outline: 2px solid hsla(328, 83%, 88%, 0.486);
 }
-
+.inputBox input{
+    width: 230px;
+}
 .inputBox textarea{
     height: 120px;
     width: 230px; 
 }
 
 .inputBox label{
-    font-size: 1.3rem;
+    font-size: 1.8rem;
 }
 .formBox{
     padding: 0 30%;
