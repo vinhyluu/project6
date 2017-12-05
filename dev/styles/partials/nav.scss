@@ -1,0 +1,30 @@
+.nav {
+    margin: 4% 0 0 0;
+    padding: 0;
+}
+
+.navRight {
+    float:right;
+    text-align: right;
+}
+
+.navLeft:first-child {
+    padding-left: 0;
+}
+
+.navLeft,
+.navRight {
+    padding: 10px 15px;
+    color: black;
+    margin-right: 10px;
+    font-size: 1.4rem;
+}
+
+.navLeft:hover,
+.navRight:hover {
+    color: #eba78d;
+}
+
+.switch{
+    clear: both;
+}
