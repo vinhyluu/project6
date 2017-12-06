@@ -120,6 +120,7 @@ class AdminView extends React.Component {
                             
                             <div className="userContentContainer">
                                 <div className="userContent">
+                                    <p><span className="bioTitle">Current Bio</span></p>
                                     <p className="bodyContent">{this.state.note}</p>
                                     <a href={`${this.state.twitter}`}>
                                         <i className="fa fa-twitter" aria-hidden="true"></i>
@@ -134,7 +135,7 @@ class AdminView extends React.Component {
                                     <EditingBox
                                         userkey={this.props.userkey} />
 
-                                    <div>
+                                    <div className="colorContainer">
                                     <p className="editColorTitle" onClick={this.showColors}>Edit Colors</p>
                                     {this.state.showColors ?
                                         <div className="colorBoxes">
