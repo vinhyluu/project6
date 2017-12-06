@@ -90,7 +90,7 @@ class TopNav extends React.Component {
                     <ul className="nav clearfix">
                         <li><Link to={'/'} className="navLink" >Dashboard</Link></li>
                         <li><Link to={'/search'} className="navLink"  >Search</Link></li>
-                        <li><Link to={`/public/${this.props.userkey}`} className="navLink"  >Public Page</Link></li>
+                        <li><Link to={`/public/${this.props.userkey}`} className="navLink">Public</Link></li>
                         <li onClick={this.logout} className="navLink" >Logout</li>
                     </ul>
                     <Switch className="switch">
