@@ -40,7 +40,7 @@
     width: 100%;
     height: 300px;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .bagItems p{
@@ -229,6 +229,11 @@
         width: calc(33.33% - 50px);
         margin-right: 50px;
     }
+
+    .bagItems:nth-of-type(3n){
+        margin-right: 0;
+        float: right;
+    }
 }
 
 @media (max-width : 1024px){
@@ -304,14 +309,23 @@
         width: calc(50% - 50px);
         margin-right: 50px;
     }
+
+    .bagItems:nth-of-type(even){
+        margin-right: 0;
+        float: right;
+    }
 }
 
 @media (max-width : 566px){
-    .bagItems{
-        width: 80%;
+    .adminContainer .bagContainer .bagItems{
+        width: 80%; 
+        margin: 50px auto 50px auto;
         float: none;
-        margin: 0 auto;
-        margin-bottom: 50px;   
+    }
+
+    .adminContainer .bagContainer:nth-of-type(even) .bagItems{
+        float: none;
+        margin: 50px auto 50px auto;
     }
 }
 @media (max-width : 480px){
