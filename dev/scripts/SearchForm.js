@@ -84,19 +84,13 @@ class SearchForm extends React.Component {
         dbRef.once("value", (res) => {
             const data = res.val();
             for (let key in data) {
-                console.log(data)
-                console.log(key)
                 const value = data[key];
                 deactiveItem.push(value);
-                console.log(deactiveItem)
-                console.log(value)
             }
             const activeItems = [];
-            console.log(activeItems)
             for (var i = 0; i < deactiveItem.length; i++) {
                 activeItems.push(deactiveItem[i].productId);
             }
-            console.log(activeItems)
             this.setState({
                 ids: activeItems
             })
