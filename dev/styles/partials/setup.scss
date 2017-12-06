@@ -51,11 +51,13 @@ h2,
 h3 {
     margin: 0;
     font-family: 'Raleway', sans-serif;
+    color: #575757;
 }
 
 /* Paragraph */
 p {
     margin: 0;
+    color: #575757;
     font-family: 'Work Sans', sans-serif;
 }
 
@@ -66,6 +68,10 @@ a {
     color: #575757;
     font-family: 'Work Sans', sans-serif;
     text-decoration: none;
+}
+
+input {
+    color: #575757;
 }
 
 /* List */

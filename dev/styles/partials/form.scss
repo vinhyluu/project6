@@ -1,8 +1,3 @@
-section {
-    width: 100vw;
-    height: 100vh;
-    // background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
-
 .formSection{
 width: 100vw;
 height: 100vh;
@@ -47,7 +42,7 @@ background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
     padding-bottom: 70px;
 }
 
-.formSubmitButton{
+.formSubmitButton {
     position: absolute;
     bottom: -5%;
     right: 9%;
@@ -63,4 +58,3 @@ background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
     padding: 12px 35px;
     transition: .35s;
 }
-
