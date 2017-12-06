@@ -1,10 +1,15 @@
+
 .formSection{
 width: 100vw;
 height: 100vh;
 background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
 }
 
-.inputWrapper{
+.formInputWrapper{
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    transform: translate(0, -50%);
     margin-top: 100px;
 }
 .inputBox{
@@ -18,38 +23,48 @@ background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
     border-radius: 0;
     width: 100%;
     letter-spacing: .1rem;
+    padding: 5px 0px;
+    border: solid 2px rgba(235, 167, 141, 0.5);
 }
 .formInput:focus{
-    outline: 2px solid hsla(328, 83%, 88%, 0.486);
+    outline: 2px solid rgba(235, 167, 141, 0.7);
 }
-
+.inputBox input{
+    width: 90%;
+}
 .inputBox textarea{
     height: 120px;
-    width: 230px; 
+    width: 90%;
 }
-
 .inputBox label{
-    font-size: 1.3rem;
+    font-size: 1.8rem;
 }
 .formBox{
-    padding: 0 30%;
-    margin-top: 20px;
+    padding: 0 15%;
+    margin-top: 15%;
+    margin-bottom: 50px;
     position: relative;
+    width: 750px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
 
 .formTitle{
     font-size: 3rem;
-    padding-bottom: 70px;
+    padding: 50px 0px 70px 0px;
 }
 
-.formSubmitButton {
+
+.formTitle:hover{
+    text-decoration-line: underline;
+    text-decoration-color: rgba(235, 167, 141, 0.7);
+}
+.formSubmitButton{
     position: absolute;
-    bottom: -5%;
+    bottom: -2%;
     right: 9%;
     transform: translate(-5%, 8.5%);
     outline: none;
     border: none;
-    background: #f7f7f7;
     box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
     font-size: 1.4rem;
     line-height: 1.4rem;
@@ -57,4 +72,87 @@ background: linear-gradient(45deg, rgba(236, 233, 230, .25), #FFF);
     letter-spacing: .1rem;
     padding: 12px 35px;
     transition: .35s;
+    background: rgb(235, 167, 141);
 }
+.formSubmitButton:hover{
+    background: #f7f7f7;
+    box-shadow: 0 4px 10px rgba(235, 167, 141, 0.7);
+}
+@media (max-width: 1403px) {
+    .formInputWrapper {
+        left: 25%;
+    }
+
+} 
+@media (max-width: 1390px) {
+    .formInputWrapper {
+        left: 22%;
+    }
+} 
+
+@media (max-width: 1280px) {
+    .formInputWrapper {
+        left: 20%;
+    }
+} 
+
+@media (max-width: 1024px) {
+    .formInputWrapper {
+        left: 10%;
+    }
+} 
+
+@media (max-width: 768px) {
+    .formInputWrapper {
+        left: 8.5%;
+    }
+    .formInput{
+        border: solid 2px rgba(235, 167, 141, 0.5);
+        
+    }
+    .formBox{
+        padding: 0 3% 0 18%;
+        width: 600px;
+
+    }
+    .inputBox{
+        padding-bottom: 20px;
+        width: 90%;
+    }
+    .inputBox textarea{
+        width: 90%; 
+     }
+    .inputBox input{
+        width: 90%;
+    }
+    .instagramLink{
+        padding-bottom: 50px;
+    }
+} 
+
+@media (max-width: 480px) {
+    .formInputWrapper {
+        left: 10%;
+    }
+    
+} 
+
+@media (max-width: 320px) {
+    .formInputWrapper {
+        left: 10%;
+    }
+    .formBox{
+        padding: 0 10%;
+    }
+    .fileInput{
+        width: 85%;
+    }
+    .inputBox{
+        padding-bottom: 20px;
+        width: 90%;
+    }
+    .inputBox input{
+        width: 90%;
+    }
+} 
+
