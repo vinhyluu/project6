@@ -70,8 +70,8 @@ class Form extends React.Component {
         
         return(
             <section className="formSection">
-                <div className="inputWrapper">
-                    <div className="searchContainer formBox">
+                <div className="formInputWrapper">
+                    <div className="formBox">
                         <h1 className="formTitle">Create Your Profile</h1>
                         <form onSubmit={this.handleClick}>
                             <div className="userImage inputBox">
